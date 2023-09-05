@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.5.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // Add the dependency for the Spring boot web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Add the dependency for the Spring boot model engine
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Add the dependency for firebase
+    implementation 'com.google.firebase:firebase-admin:7.1.0'
+    implementation 'com.google.auth:google-auth-library-oauth2-http:0.25.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}

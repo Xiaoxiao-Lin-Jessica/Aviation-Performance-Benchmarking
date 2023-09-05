@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greeting</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Optional: Add a background color */
+        }
+
+        .container {
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+            height: 100%;
+            position: relative;
+        }
+
+        .container img {
+            max-width: 100%; /* Adjust based on your preference */
+            height: auto;
+        }
+
+        .container p {
+            position: absolute;
+            right: 40%; /* Adjust to move the text left or right */
+            bottom: 40%; /* Adjust to move the text up or down */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="/cat.jpg" alt="Cat Image" />
+    <p th:text="'Hello! ' + ${name}"></p>
+</div>
+</body>
+</html>
+
