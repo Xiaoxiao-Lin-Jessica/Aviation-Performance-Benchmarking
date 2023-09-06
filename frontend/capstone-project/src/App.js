@@ -1,9 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import react from "react";
+import SignInSide from "./components/SignInSide";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
+    return (
+        /*<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,8 +20,12 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
-  );
+    </div>*/
+        <div>
+            <h1>Capstone Project</h1>
+            <SignInSide />
+        </div>
+    );
 }
 
 export default App;

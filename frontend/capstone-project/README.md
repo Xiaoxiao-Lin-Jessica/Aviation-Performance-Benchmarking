@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Before starting
+
+打开文件夹的地址，敲 cmd，安装以下东西：
+npm install react react-dom
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+npm install @mui/styled-engine-sc
+
+之后才能正常测试和开发
+
 ## Available Scripts
 
 In the project directory, you can run:
