@@ -17,18 +17,19 @@ public class MyApplication {
         SpringApplication.run(MyApplication.class, args);
     }
 
-//    @PostConstruct
-//    public void initializeFirebase() {
-//        try {
-//            FileInputStream serviceAccount = new FileInputStream("firebase_key.json");
-//            FirebaseOptions options = new FirebaseOptions.Builder()
-//                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-//                    .setDatabaseUrl("https://capstone-3267f-default-rtdb.firebaseio.com/")
-//                    .build();
-//
-//            FirebaseApp.initializeApp(options);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    // Initialize the Firebase Realtime Database.
+    @PostConstruct
+    public void initializeFirebase() {
+        try {
+            FileInputStream serviceAccount = new FileInputStream("src/main/resources/firebase_key.json");
+            FirebaseOptions options = new FirebaseOptions.Builder()
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setDatabaseUrl("https://capstone-3267f-default-rtdb.firebaseio.com/")
+                    .build();
+
+            FirebaseApp.initializeApp(options);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
