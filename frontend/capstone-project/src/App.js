@@ -1,5 +1,6 @@
 import react from "react";
 import SignInSide from "./components/SignInSide";
+import Dashboard from "./components/DashBoard";
 import logo from "./logo.svg";
 import "./App.css";
 

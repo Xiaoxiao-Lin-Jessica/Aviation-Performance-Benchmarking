@@ -113,14 +113,20 @@ export default function SignInSide() {
                             >
                                 Sign In
                             </Button>
+                            {/*TODO: After user clicking the sign in button, jump to the DashBoard.*/}
                             <Grid container>
                                 <Grid item xs>
                                     <Link href="#" variant="body2">
+                                        {" "}
+                                        {/*TODO: Change this to a link to the
+                                        password reset page. */}
                                         Forgot password?
                                     </Link>
                                 </Grid>
                                 <Grid item>
                                     <Link href="#" variant="body2">
+                                        {" "}
+                                        {/*TODO: Change this to a link to the contact us page.*/}
                                         {"Don't have an account? Contact us."}
                                     </Link>
                                 </Grid>
