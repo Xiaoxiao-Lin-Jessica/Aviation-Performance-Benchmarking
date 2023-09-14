@@ -2,6 +2,9 @@ package org.capstone.controllers;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import org.capstone.LoginCallback;
+import org.capstone.model.User;
+import org.capstone.repository.UserDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +34,26 @@ public class CatController {
 //            System.out.println("Error writing data: " + e.getMessage());
 //        }
 
+
+        // Uncomment this block of code to add a new user in database.
+
+//        User user = new User("admin", "admin@test.com","admin123");
+        UserDAO userDAO = new UserDAO();
+//        userDAO.addUser(user);
+
+        // Example of user login check using UserDAO.
+        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
+            @Override
+            public void onLoginResult(boolean success) {
+                if (success) {
+                    // Login success
+                    System.out.println("Login success!");
+                } else {
+                    // Login failed
+                    System.out.println("Wrong password!");
+                }
+            }
+        });
         model.addAttribute("name", name);
         return "greeting";
     }
