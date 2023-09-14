@@ -27,7 +27,7 @@ public class UserController {
             return "success";
         }
         else {
-            model.addAttribute("data","请输入你的密码");
+            model.addAttribute("data","input your password");
             return "login";
         }
 
