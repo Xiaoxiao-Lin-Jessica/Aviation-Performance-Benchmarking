@@ -1,26 +1,31 @@
 package org.capstone.service;
-import org.capstone.entity.User;
+import org.capstone.LoginCallback;
+import org.capstone.repository.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 /**
  * @author Jianan Lu
- * @version 1.0
+ * @version 2.0
  */
 @Service
 public class UserService implements UserServiceInterface{
     @Autowired
-    private UserMapper userMapper;
-
-
+    private UserDAO userDao;
     @Override
-    public int add(User user) {
-        return userMapper.add(user);
-    }
-
-    @Override
-    public List<User> queryAll() {
-        return userMapper.queryAll();
+    public boolean login(String email, String password) {
+        boolean[] ifSuccess = new boolean[0];
+        userDao.login(email, password, new LoginCallback() {
+            @Override
+            public void onLoginResult(boolean success) {
+                if (success) {
+                    ifSuccess[0] = true;
+                }
+                else{
+                    ifSuccess[0] = false;
+                }
+            }
+        });
+        return ifSuccess[0];
     }
 }
