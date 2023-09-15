@@ -14,18 +14,18 @@ public class UserService implements UserServiceInterface{
     private UserDAO userDao;
     @Override
     public boolean login(String email, String password) {
-        boolean[] ifSuccess = new boolean[0];
+        //boolean[] ifSuccess = new boolean[0];
         userDao.login(email, password, new LoginCallback() {
             @Override
             public void onLoginResult(boolean success) {
                 if (success) {
-                    ifSuccess[0] = true;
+                 //   ifSuccess[0] = true;
                 }
                 else{
-                    ifSuccess[0] = false;
+                   // ifSuccess[0] = false;
                 }
             }
         });
-        return ifSuccess[0];
+       return true;// return ifSuccess[0];
     }
 }

@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'application'
+
 }
 
 group = 'org.example'
@@ -26,4 +28,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+application{
+    mainClass.set("main");
 }
