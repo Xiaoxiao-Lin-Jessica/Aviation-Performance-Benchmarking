@@ -24,7 +24,7 @@ function App() {
     </div>*/
         <div>
             <h1>Capstone Project</h1>
-            <SignInSide />
+            <Dashboard />
         </div>
     );
 }
