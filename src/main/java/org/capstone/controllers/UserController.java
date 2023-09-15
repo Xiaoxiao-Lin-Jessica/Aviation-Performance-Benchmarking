@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserController {
     @Autowired
-    public UserService userService;
+    public UserService userService = new UserService();
 
     @RequestMapping("/toLogin")
     public String toLogin(){

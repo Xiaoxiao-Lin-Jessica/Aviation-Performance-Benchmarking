@@ -11,21 +11,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements UserServiceInterface{
     @Autowired
-    private UserDAO userDao;
+    private UserDAO userDao = new UserDAO();
     @Override
     public boolean login(String email, String password) {
         //boolean[] ifSuccess = new boolean[0];
-        userDao.login(email, password, new LoginCallback() {
-            @Override
-            public void onLoginResult(boolean success) {
-                if (success) {
-                 //   ifSuccess[0] = true;
-                }
-                else{
-                   // ifSuccess[0] = false;
-                }
-            }
-        });
+//        userDao.login(email, password, new LoginCallback() {
+//            @Override
+//            public void onLoginResult(boolean success) {
+//                if (success) {
+//                 //   ifSuccess[0] = true;
+//                }
+//                else{
+//                   // ifSuccess[0] = false;
+//                }
+//            }
+//        });
        return true;// return ifSuccess[0];
     }
 }
