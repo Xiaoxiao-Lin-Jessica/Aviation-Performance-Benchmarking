@@ -2,19 +2,11 @@ package org.capstone.service;
 
 import com.google.firebase.database.*;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
-
-
-public class Firebase_Delete {
+public class FirebaseDelete {
     private final DatabaseReference mDatabase;
 
-    public Firebase_Delete(){
+    public FirebaseDelete(){
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
