@@ -5,6 +5,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.capstone.LoginCallback;
 import org.capstone.model.User;
 import org.capstone.repository.UserDAO;
+import org.capstone.service.Firebase_Delete;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,6 @@ public class CatController {
 
 
         // Uncomment this block of code to add a new user in database.
-
 //        User user = new User("admin", "admin@test.com","admin123");
         UserDAO userDAO = new UserDAO();
 //        userDAO.addUser(user);
@@ -54,6 +54,11 @@ public class CatController {
                 }
             }
         });
+
+        // Uncomment this code to delete the database attributes.
+//        Firebase_Delete dataDelete = new Firebase_Delete();
+//        dataDelete.deleteData("All");
+
         model.addAttribute("name", name);
         return "greeting";
     }
