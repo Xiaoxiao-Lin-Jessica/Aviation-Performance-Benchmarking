@@ -34,12 +34,19 @@ public class LoadData {
             FileInputStream excelFile = new FileInputStream(excelFilePath);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0); // 假设表在第一个工作表
+//            int lastRowIndex = sheet.getLastRowNum();
             Map<String, Object> tree = new HashMap<>();
             for (Row row : sheet) {
                 // 忽略表头行
                 if (row.getRowNum() == 0) {
                     continue;
                 }
+//                if (row.getRowNum() == lastRowIndex) {
+//                    break;
+//                }
+//                if (row.getRowNum() == 10) {
+//                    break;
+//                }
                 String departing_port = row.getCell(1).getStringCellValue();
                 String arriving_port = row.getCell(2).getStringCellValue();
                 String airline = row.getCell(3).getStringCellValue();
@@ -49,26 +56,30 @@ public class LoadData {
                 Double year = row.getCell(14).getNumericCellValue();
                 Double month = row.getCell(15).getNumericCellValue();
 
-                Map<String, Object> arrivingPortMap = (Map<String, Object>) tree.getOrDefault(departing_port, new HashMap<>());
+                Map<String, Object> departingPortMap = (Map<String, Object>) tree.getOrDefault(departing_port, new HashMap<>());
+                Map<String, Object> arrivingPortMap = (Map<String, Object>) departingPortMap.getOrDefault(arriving_port, new HashMap<>());
 //                Map<Integer, Object> yearMap = (Map<Integer, Object>) arrivingPortMap.getOrDefault(arriving_port, new HashMap<>());
 //                Map<String, Object> monthMap = (Map<String, Object>) yearMap.getOrDefault(year, new HashMap<>());
                 Map<String, Object> yearMap = (Map<String, Object>) arrivingPortMap.getOrDefault(String.valueOf(year.intValue()), new HashMap<>());
                 Map<String, Object> monthMap = (Map<String, Object>) yearMap.getOrDefault(String.valueOf(month.intValue()), new HashMap<>());
-                Map<String, Object> airlineMap = (Map<String, Object>) monthMap.getOrDefault(month, new HashMap<>());
+                Map<String, Object> airlineMap = (Map<String, Object>) monthMap.getOrDefault(airline, new HashMap<>());
 
                 airlineMap.put("Cancellations", cancellations);
                 airlineMap.put("OnTime Arrivals",on_time_arrivals);
                 airlineMap.put("OnTime Departures", on_time_departures);
 
-//                monthMap.put(airline, airlineMap);
-//                yearMap.put(month.intValue(), monthMap);
-                yearMap.put(String.valueOf(year.intValue()), monthMap);
-                monthMap.put(String.valueOf(month.intValue()), airlineMap);
-                arrivingPortMap.put(arriving_port, yearMap);
-                tree.put(departing_port, arrivingPortMap);
 
-                // Only put the first row
-                break;
+//                yearMap.put(String.valueOf(year.intValue()), monthMap);
+//                monthMap.put(String.valueOf(month.intValue()), airlineMap);
+                monthMap.put(airline, airlineMap);
+                yearMap.put(String.valueOf(month.intValue()), monthMap);
+                arrivingPortMap.put(String.valueOf(year.intValue()), yearMap);
+                departingPortMap.put(arriving_port, arrivingPortMap);
+//                tree.put(departing_port, arrivingPortMap);
+                tree.put(departing_port, departingPortMap);
+
+//                // Only put the first row
+//                break;
             }
             System.out.println(tree);
             // 将数据写入 Firebase 数据库
