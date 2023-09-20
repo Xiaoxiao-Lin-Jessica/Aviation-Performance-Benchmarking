@@ -1,31 +1,37 @@
 package org.capstone.controllers;
-import org.capstone.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.capstone.LoginCallback;
+import org.capstone.repository.UserDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- * @author Jianan Lu
- * @version 2.0
- */
 @Controller
 public class UserController {
-    @Autowired
-    public UserService userService = new UserService();
 
-    @RequestMapping("/toLogin")
-    public String toLogin(){
-        return "toLogin";
+    @GetMapping("/toLoginPage")
+    public String toLoginPage() {
+        return "loginPage";
     }
-    @RequestMapping("/Login")
-    public String  login(Model model, String email, String password){
-        if(userService.login(email, password) == true){
-            model.addAttribute("result","success");
-        }
-        else{
-            model.addAttribute("result","failed");
-        }
+
+    @PostMapping("/login")
+    public String login(@RequestParam String email, @RequestParam String pwd, Model model) {
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.login(email, pwd, new LoginCallback(){//"admin@test.com", "admin123"
+            @Override
+            public void onLoginResult(boolean success) {
+                if (success) {
+                    System.out.println("Login success!");
+                    model.addAttribute("ifSuccess", true);
+                } else {
+                    System.out.println("Login failed!");
+                    model.addAttribute("ifSuccess", false);
+                }
+            }
+        });
         return "login";
     }
 }
