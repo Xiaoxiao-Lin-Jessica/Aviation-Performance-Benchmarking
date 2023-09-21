@@ -65,10 +65,28 @@ public class CatController {
 //        loadData.loadExcelDataToFirebase(excelPath);
 
         AirlineDAO airlineDAO = new AirlineDAO();
+
+        // Get cancel rate.
         airlineDAO.getCancelRate("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
             @Override
             public void onSuccess(Double cancelRate) {
                 System.out.println("Cancel rate: " + cancelRate);
+            }
+
+            @Override
+            public void onError(DatabaseError error) {
+                if (error != null) {
+                    System.out.println("Failed: " + error.getCode());
+                } else {
+                    System.out.println("No such data!");
+                }
+            }
+        });
+
+        airlineDAO.getOnTimeArrival("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
+            @Override
+            public void onSuccess(Double data) {
+                System.out.println("On time arrival rate: " + data);
             }
 
             @Override

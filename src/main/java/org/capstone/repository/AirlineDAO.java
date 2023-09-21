@@ -36,6 +36,27 @@ public class AirlineDAO {
         });
     }
 
+    public void getOnTimeArrival(String dep, String arr, String year, String month, String company, FirebaseCallback callback) {
+        DatabaseReference userRef = mDatabase.child(dep).child(arr).child(year).child(month).child(company).child("OnTime Arrivals");
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Double onTimeArrival = dataSnapshot.getValue(Double.class);
+                if (onTimeArrival != null) {
+                    callback.onSuccess(onTimeArrival);
+                } else {
+                    callback.onError(null);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError(databaseError);
+            }
+        });
+    }
+
 
 
 }
