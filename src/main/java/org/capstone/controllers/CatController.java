@@ -1,7 +1,10 @@
 package org.capstone.controllers;
 
+import com.google.firebase.database.DatabaseError;
+import org.capstone.FirebaseCallback;
 import org.capstone.LoginCallback;
 import org.capstone.model.User;
+import org.capstone.repository.AirlineDAO;
 import org.capstone.repository.UserDAO;
 import org.capstone.service.LoadData;
 import org.springframework.stereotype.Controller;
@@ -56,9 +59,28 @@ public class CatController {
 //        FirebaseDelete dataDelete = new FirebaseDelete();
 //        dataDelete.deleteData("All");
 
+        // Uncomment this code to load the data to firebase
 //        String excelPath = "src/main/resources/static/10-23_delay_cancel.xlsx";
 //        LoadData loadData = new LoadData();
 //        loadData.loadExcelDataToFirebase(excelPath);
+
+        AirlineDAO airlineDAO = new AirlineDAO();
+        airlineDAO.getCancelRate("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
+            @Override
+            public void onSuccess(Double cancelRate) {
+                System.out.println("Cancel rate: " + cancelRate);
+            }
+
+            @Override
+            public void onError(DatabaseError error) {
+                if (error != null) {
+                    System.out.println("Failed: " + error.getCode());
+                } else {
+                    System.out.println("No such data!");
+                }
+            }
+        });
+
 
         model.addAttribute("name", name);
         return "greeting";
