@@ -42,18 +42,18 @@ public class CatController {
 //        userDAO.addUser(user);
 
         // Example of user login check using UserDAO.
-        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
-            @Override
-            public void onLoginResult(boolean success) {
-                if (success) {
-                    // Login success
-                    System.out.println("Login success!");
-                } else {
-                    // Login failed
-                    System.out.println("Wrong password!");
-                }
-            }
-        });
+//        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
+//            @Override
+//            public void onLoginResult(boolean success) {
+//                if (success) {
+//                    // Login success
+//                    System.out.println("Login success!");
+//                } else {
+//                    // Login failed
+//                    System.out.println("Wrong password!");
+//                }
+//            }
+//        });
 
         // Uncomment this code to delete the database attributes.
 //        FirebaseDelete dataDelete = new FirebaseDelete();
@@ -67,37 +67,55 @@ public class CatController {
         AirlineDAO airlineDAO = new AirlineDAO();
 
         // Get cancel rate.
-        airlineDAO.getCancelRate("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
-            @Override
-            public void onSuccess(Double cancelRate) {
-                System.out.println("Cancel rate: " + cancelRate);
-            }
+//        airlineDAO.getCancelRate("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
+//            @Override
+//            public void onSuccess(Double cancelRate) {
+//                System.out.println("Cancel rate: " + cancelRate);
+//            }
+//
+//            @Override
+//            public void onError(DatabaseError error) {
+//                if (error != null) {
+//                    System.out.println("Failed: " + error.getCode());
+//                } else {
+//                    System.out.println("No such data!");
+//                }
+//            }
+//        });
 
-            @Override
-            public void onError(DatabaseError error) {
-                if (error != null) {
-                    System.out.println("Failed: " + error.getCode());
-                } else {
-                    System.out.println("No such data!");
-                }
-            }
-        });
+        // Get on time arrival rate.
+//        airlineDAO.getOnTimeArrival("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
+//            @Override
+//            public void onSuccess(Double data) {
+//                System.out.println("On time arrival rate: " + data);
+//            }
+//
+//            @Override
+//            public void onError(DatabaseError error) {
+//                if (error != null) {
+//                    System.out.println("Failed: " + error.getCode());
+//                } else {
+//                    System.out.println("No such data!");
+//                }
+//            }
+//        });
 
-        airlineDAO.getOnTimeArrival("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
-            @Override
-            public void onSuccess(Double data) {
-                System.out.println("On time arrival rate: " + data);
-            }
-
-            @Override
-            public void onError(DatabaseError error) {
-                if (error != null) {
-                    System.out.println("Failed: " + error.getCode());
-                } else {
-                    System.out.println("No such data!");
-                }
-            }
-        });
+        // Get on time departure rate.
+//        airlineDAO.getOnTimeDeparture("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
+//            @Override
+//            public void onSuccess(Double data) {
+//                System.out.println("On time departure rate: " + data);
+//            }
+//
+//            @Override
+//            public void onError(DatabaseError error) {
+//                if (error != null) {
+//                    System.out.println("Failed: " + error.getCode());
+//                } else {
+//                    System.out.println("No such data!");
+//                }
+//            }
+//        });
 
 
         model.addAttribute("name", name);
