@@ -16,7 +16,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-//import backgroundImage from "../Images/AviationPic.jpg";
 
 const defaultTheme = createTheme();
 
@@ -32,15 +31,16 @@ export default function SignInSide() {
             password: data.get("password"),
         };
         try {
-            const response = await fetch("http://localhost:4000/login", {
+            const response = await fetch("http://localhost:8080/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    'Accept': 'text/plain',
                 },
                 body: JSON.stringify(user),
             });
 
-            const responseData = await response.json();
+            const responseData = await response.text();
             console.log(responseData);
             if (response.ok) {
                 console.log(localStorage);
@@ -49,7 +49,7 @@ export default function SignInSide() {
                 navigate("/");
             } else {
                 //error handler
-                setError(responseData.message || "An error occurred");
+                setError(responseData.message || "invalid email or password");
             }
         } catch (err) {
             setError(err.message);
