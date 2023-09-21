@@ -1,37 +1,32 @@
 package org.capstone.controllers;
-
 import org.capstone.LoginCallback;
+import org.capstone.model.User;
 import org.capstone.repository.UserDAO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import java.util.concurrent.CompletableFuture;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
-    @GetMapping("/toLoginPage")
-    public String toLoginPage() {
-        return "loginPage";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String pwd, Model model) {
-
+    @PostMapping(value="/login")//,produces = MediaType.APPLICATION_JSON_VALUE
+    public CompletableFuture<ResponseEntity<String>> login(@RequestBody User user) {
+        CompletableFuture<ResponseEntity<String>> future = new CompletableFuture<>();
         UserDAO userDAO = new UserDAO();
-        userDAO.login(email, pwd, new LoginCallback(){//"admin@test.com", "admin123"
+        userDAO.login(user.getEmail(), user.getPassword(), new LoginCallback() {
             @Override
             public void onLoginResult(boolean success) {
                 if (success) {
                     System.out.println("Login success!");
-                    model.addAttribute("ifSuccess", true);
+                    future.complete(ResponseEntity.ok("success"));
                 } else {
                     System.out.println("Login failed!");
-                    model.addAttribute("ifSuccess", false);
+                    future.complete(ResponseEntity.badRequest().body("failed"));
                 }
             }
         });
-        return "login";
+        return future;
     }
 }

@@ -1,24 +1,16 @@
 package org.capstone.model;
 
 public class User {
-    private String name;
+
     private String email;
     private String password;
 
-    public User(String n, String e, String p){
-        this.name = n;
+    public User(String e, String p){
         this.email = e;
         this. password = p;
     }
     public User(){}
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getEmail() {
         return email;
@@ -39,8 +31,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
