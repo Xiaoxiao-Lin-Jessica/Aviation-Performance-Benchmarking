@@ -56,9 +56,9 @@ public class CatController {
 //        FirebaseDelete dataDelete = new FirebaseDelete();
 //        dataDelete.deleteData("All");
 
-        String excelPath = "src/main/resources/static/10-23_delay_cancel.xlsx";
-        LoadData loadData = new LoadData();
-        loadData.loadExcelDataToFirebase(excelPath);
+//        String excelPath = "src/main/resources/static/10-23_delay_cancel.xlsx";
+//        LoadData loadData = new LoadData();
+//        loadData.loadExcelDataToFirebase(excelPath);
 
         model.addAttribute("name", name);
         return "greeting";
