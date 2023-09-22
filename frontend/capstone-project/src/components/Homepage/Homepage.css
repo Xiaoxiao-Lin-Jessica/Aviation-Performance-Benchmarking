@@ -48,7 +48,7 @@
     align-items: center;
 }
 
-/* 导航栏文字样式 */
+/* Navigation bar text style */
 .logo-text {
     color: black;
     font-size: 20px;
@@ -60,14 +60,14 @@
     border-radius: 50px;
 }
 
-/*样式下拉按钮*/
+/*Style drop-down button*/
 .dropbtn {
     background-color: white;
     color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
-    cursor: pointer; /*当鼠标悬停在按钮上时，鼠标光标变为手形以指示它是可点击的*/
+    cursor: pointer; /*When the mouse hovers over the button, the mouse cursor changes to a hand shape to indicate that it is clickable*/
 }
 
 .icon-button{
