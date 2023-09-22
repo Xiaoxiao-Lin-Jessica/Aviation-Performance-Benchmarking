@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+}
+
+.background {
+    background: rgb(255, 255, 255);
+    background-blend-mode: darken;
+    background-size: cover;
+}
+
+.footer {
+    background-color: #000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.text-footer {
+    text-align: center;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
+
+
+.nav-list {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation bar text style */
+.logo-text {
+    color: black;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.logo img {
+    width: 50px;
+    border-radius: 50px;
+}
+
+/*Style drop-down button*/
+.dropbtn {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer; /*When the mouse hovers over the button, the mouse cursor changes to a hand shape to indicate that it is clickable*/
+}
+
+.icon-button{
+    background-color: white;
+    color: black;
+    /*padding: 16px;*/
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change style when mouseover button */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show dropdown content area when hovering over dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*Change the style of dropdown button when hovering over dropdown container*/
+.dropdown:hover .dropbtn {
+    background-color: darkgrey;
+}
+
+.nav-list li {
+    list-style: none;
+    padding: 26px 30px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-list li a:hover {
+    color: grey;
+}
+
+/*
+.rightNav {
+  width: 30%;
+  text-align: right;
+}
+*/
+
+.rightNav img {
+    width: 30px;
+    height: 30px;
+    margin: 0 20px;
+    /*
+    filter: invert(100%);
+    */
+}
+
+
+.box-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    max-width: 80%;
+    margin: auto;
+    height: 80%;
+}
+
+
+
+.firstHalf {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: palevioletred; /* the background color of the first section */
+
+}
+
+.secondHalf {
+    width: 100%;
+    background-color: darkseagreen; /* the background color of the second section */
+
+}
+
+.secondHalf img {
+    width: 70%;
+    border: 4px solid white;
+    border-radius: 150px;
+    display: block;
+    margin: auto;
+}
+
+.text-big {
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+.text-small {
+    font-size: 18px;
+}
+
+
+.section {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(250, 250, 250);
+    justify-content: space-between;
+}
+
+.section-Left {
+    flex-direction: row-reverse;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+/* Responsive layout - makes navigation links stack instead of side by side when the screen is less than 400 pixels wide */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
+
