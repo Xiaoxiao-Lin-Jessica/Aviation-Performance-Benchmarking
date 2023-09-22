@@ -83,17 +83,14 @@
     display: inline-block;
 }
 
-/*下拉菜单的内容区域*/
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /*添加一个轻微的阴影效果以提升视觉效果。*/
-    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-/*内容区域内的链接元素*/
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -101,14 +98,14 @@
     display: block;
 }
 
-/* 鼠标悬停在下拉按钮上时更改样式 */
+/* Change style when mouseover button */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-/* 鼠标悬停在下拉按钮上时显示下拉内容区域 */
+/* Show dropdown content area when hovering over dropdown button */
 .dropdown:hover .dropdown-content {
     display: block;
 }
-/*在鼠标悬停在下拉容器上时更改下拉按钮的样式*/
+/*Change the style of dropdown button when hovering over dropdown container*/
 .dropdown:hover .dropbtn {
     background-color: darkgrey;
 }
@@ -161,13 +158,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: palevioletred; /* 第一个部分的背景颜色 */
+    background-color: palevioletred; /* the background color of the first section */
 
 }
 
 .secondHalf {
     width: 100%;
-    background-color: darkseagreen; /* 第二个部分的背景颜色 */
+    background-color: darkseagreen; /* the background color of the second section */
 
 }
 
@@ -208,7 +205,7 @@
 
 
 
-/* 响应式布局 - 当屏幕的宽度小于 400 像素时，使导航链接堆叠而不是并排 */
+/* Responsive layout - makes navigation links stack instead of side by side when the screen is less than 400 pixels wide */
 @media screen and (max-width: 400px) {
     .navbar a {
         float: none;

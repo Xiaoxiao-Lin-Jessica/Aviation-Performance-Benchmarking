@@ -11,7 +11,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<UserLogin />} />
                 <Route path="/" element={<Homepage />} />
-                {/* 添加其他路由 */}
+                {/* Add additional routes */}
             </Routes>
         </Router>
 

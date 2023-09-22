@@ -6,17 +6,17 @@ function App() {
     const [isLogoutClicked, setIsLogoutClicked] = useState(false);
 
     const handleHelpClick = () => {
-        // 处理点击 Help 图标的逻辑
+        // Handle the logic of clicking the Help icon
         setIsHelpClicked(true);
 
-        // 在这里可以添加处理逻辑，比如显示帮助信息或执行其他操作
+        // Here you can add processing logic, such as displaying help information or performing other actions
     };
 
     const handleLogoutClick = () => {
-        // 处理点击 Logout 图标的逻辑
+        // Handles the logic for clicking the Logout icon
         setIsLogoutClicked(true);
 
-        // 在这里可以添加处理逻辑，比如执行注销操作
+        // Here you can add processing logic, such as performing logout operations
     };
 
     return (
