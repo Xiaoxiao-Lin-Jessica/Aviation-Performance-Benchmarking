@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // 导入 useState 钩子
+import React, { useState } from 'react';
 import './Homepage.css';
 
 function App() {
