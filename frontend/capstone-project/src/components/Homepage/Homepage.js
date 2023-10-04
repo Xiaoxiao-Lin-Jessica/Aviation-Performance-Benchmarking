@@ -15,7 +15,7 @@ function App() {
     const handleLogoutClick = () => {
         // Handles the logic for clicking the logout icon
         setIsLogoutClicked(true);
-        // Here you can add processing logic, such as performing a logout operation
+        // Here you can add processing logics, such as performing a logout operation
     };
 
     return (
