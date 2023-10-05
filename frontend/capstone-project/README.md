@@ -4,13 +4,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Before starting
 
-打开文件夹的地址，敲 cmd，安装以下东西：
+先去Node.js安装LTS版本. 之后在命令行中输入以下命令，检查是否安装成功：
+npm -v
+node-v
+有显示对应版本就代表安装成功
+
+然后打开文件夹的地址，敲 cmd，输入：
+npm run build
+
+一共安装6个，如果有报错，根据报错提示手动安装缺少的包。
+6个包分别是：
 npm install react react-dom
 npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
 npm install @mui/styled-engine-sc
+npm install react-router-dom
+npm install react-scripts
 
-之后才能正常测试和开发
+一般会缺最后两个。
+全部安装好之后才能正常进行前端测试和开发。
 
 ## Available Scripts
 
