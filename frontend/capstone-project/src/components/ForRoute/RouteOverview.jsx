@@ -98,6 +98,5 @@ function RouteOverview() {
 
     );
 }
-}
 
 export default RouteOverview;
