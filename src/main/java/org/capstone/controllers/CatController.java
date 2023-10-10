@@ -1,12 +1,8 @@
 package org.capstone.controllers;
 
-import com.google.firebase.database.DatabaseError;
-import org.capstone.FirebaseCallback;
 import org.capstone.LoginCallback;
-import org.capstone.model.User;
-import org.capstone.repository.AirlineDAO;
 import org.capstone.repository.UserDAO;
-import org.capstone.service.LoadData;
+import org.capstone.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,80 +38,44 @@ public class CatController {
 //        userDAO.addUser(user);
 
         // Example of user login check using UserDAO.
-//        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
-//            @Override
-//            public void onLoginResult(boolean success) {
-//                if (success) {
-//                    // Login success
-//                    System.out.println("Login success!");
-//                } else {
-//                    // Login failed
-//                    System.out.println("Wrong password!");
-//                }
-//            }
-//        });
+        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
+            @Override
+            public void onLoginResult(boolean success) {
+                if (success) {
+                    // Login success
+                    System.out.println("Login success!");
+                } else {
+                    // Login failed
+                    System.out.println("Wrong password!");
+                }
+            }
+        });
 
-        // Uncomment this code to delete the database attributes.
+//         Uncomment this code to delete the database attributes.
 //        FirebaseDelete dataDelete = new FirebaseDelete();
-//        dataDelete.deleteData("All");
-
-        // Uncomment this code to load the data to firebase
+//        dataDelete.deleteData("Load_Factor");
+//         The first time storing with data structure.
 //        String excelPath = "src/main/resources/static/10-23_delay_cancel.xlsx";
 //        LoadData loadData = new LoadData();
 //        loadData.loadExcelDataToFirebase(excelPath);
 
-        AirlineDAO airlineDAO = new AirlineDAO();
+//         Store two excel
+//        String excelPath_1 = "src/main/resources/static/18-23load_factor.xlsx";
+//        LoadDataWithTable1 loadDataT1 = new LoadDataWithTable1();
+//        loadDataT1.loadExcelToFirebase(excelPath_1);
+        String excelPath_2 = "src/main/resources/static/delay_cancel.xlsx";
+        LoadDataWithTable2 loadDataT2 = new LoadDataWithTable2();
+        loadDataT2.loadExcel2ToFirebase(excelPath_2);
 
-        // Get cancel rate.
-//        airlineDAO.getCancelRate("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
+//        ExportStringJSONdata exporter = new ExportStringJSONdata();
+//        exporter.exportDataToJson(new ExportStringJSONdata.JsonDataCallback(){
 //            @Override
-//            public void onSuccess(Double cancelRate) {
-//                System.out.println("Cancel rate: " + cancelRate);
-//            }
-//
-//            @Override
-//            public void onError(DatabaseError error) {
-//                if (error != null) {
-//                    System.out.println("Failed: " + error.getCode());
-//                } else {
-//                    System.out.println("No such data!");
-//                }
+//            public void onDataLoaded(String cancelDelayJson, String loadFactorJson) {
+//                System.out.println("cancelDelayJson: " + cancelDelayJson);
+//                System.out.println("loadFactorJson: " + loadFactorJson);
 //            }
 //        });
 
-        // Get on time arrival rate.
-//        airlineDAO.getOnTimeArrival("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
-//            @Override
-//            public void onSuccess(Double data) {
-//                System.out.println("On time arrival rate: " + data);
-//            }
-//
-//            @Override
-//            public void onError(DatabaseError error) {
-//                if (error != null) {
-//                    System.out.println("Failed: " + error.getCode());
-//                } else {
-//                    System.out.println("No such data!");
-//                }
-//            }
-//        });
-
-        // Get on time departure rate.
-//        airlineDAO.getOnTimeDeparture("Adelaide", "Sydney", "2010", "1", "Qantas", new FirebaseCallback() {
-//            @Override
-//            public void onSuccess(Double data) {
-//                System.out.println("On time departure rate: " + data);
-//            }
-//
-//            @Override
-//            public void onError(DatabaseError error) {
-//                if (error != null) {
-//                    System.out.println("Failed: " + error.getCode());
-//                } else {
-//                    System.out.println("No such data!");
-//                }
-//            }
-//        });
 
 
         model.addAttribute("name", name);
