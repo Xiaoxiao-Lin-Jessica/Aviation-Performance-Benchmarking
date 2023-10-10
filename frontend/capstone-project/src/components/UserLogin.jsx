@@ -12,17 +12,49 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
 
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-    const handleSubmit = (event) => {
+    const navigate = useNavigate();
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
+        const user = {
             email: data.get("email"),
             password: data.get("password"),
-        });
+        };
+        try {
+            const response = await fetch("http://localhost:8080/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Accept': 'text/plain',
+                },
+                body: JSON.stringify(user),
+            });
+
+            const responseData = await response.text();
+            console.log(responseData);
+            if (response.ok) {
+                console.log(localStorage);
+                localStorage.setItem("token", responseData.token);
+                console.log(localStorage);
+                navigate("/");
+            } else {
+                //error handler
+                setError(responseData.message || "invalid email or password");
+            }
+        } catch (err) {
+            setError(err.message);
+            console.log(err);
+        }
     };
 
     return (
@@ -72,8 +104,8 @@ export default function SignInSide() {
                         </Typography>
                         <Box
                             component="form"
-                            noValidate
                             onSubmit={handleSubmit}
+                            noValidate
                             sx={{ mt: 1 }}
                         >
                             <TextField
@@ -96,6 +128,9 @@ export default function SignInSide() {
                                 id="password"
                                 autoComplete="current-password"
                             />
+                            {error && (
+                                <div style={{ color: "red" }}>{error}</div>
+                            )}
                             <FormControlLabel
                                 control={
                                     <Checkbox
