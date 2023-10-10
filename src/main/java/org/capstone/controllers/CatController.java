@@ -34,22 +34,22 @@ public class CatController {
 
         // Uncomment this block of code to add a new user in database.
 //        User user = new User("admin", "admin@test.com","admin123");
-        UserDAO userDAO = new UserDAO();
+//        UserDAO userDAO = new UserDAO();
 //        userDAO.addUser(user);
 
         // Example of user login check using UserDAO.
-        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
-            @Override
-            public void onLoginResult(boolean success) {
-                if (success) {
-                    // Login success
-                    System.out.println("Login success!");
-                } else {
-                    // Login failed
-                    System.out.println("Wrong password!");
-                }
-            }
-        });
+//        userDAO.login("admin@test.com", "admin123", new LoginCallback(){
+//            @Override
+//            public void onLoginResult(boolean success) {
+//                if (success) {
+//                    // Login success
+//                    System.out.println("Login success!");
+//                } else {
+//                    // Login failed
+//                    System.out.println("Wrong password!");
+//                }
+//            }
+//        });
 
 //         Uncomment this code to delete the database attributes.
 //        FirebaseDelete dataDelete = new FirebaseDelete();
@@ -63,17 +63,14 @@ public class CatController {
 //        String excelPath_1 = "src/main/resources/static/18-23load_factor.xlsx";
 //        LoadDataWithTable1 loadDataT1 = new LoadDataWithTable1();
 //        loadDataT1.loadExcelToFirebase(excelPath_1);
-        String excelPath_2 = "src/main/resources/static/delay_cancel.xlsx";
-        LoadDataWithTable2 loadDataT2 = new LoadDataWithTable2();
-        loadDataT2.loadExcel2ToFirebase(excelPath_2);
+//        String excelPath_2 = "src/main/resources/static/delay_cancel.xlsx";
+//        LoadDataWithTable2 loadDataT2 = new LoadDataWithTable2();
+//        loadDataT2.loadExcel2ToFirebase(excelPath_2);
 
 //        ExportStringJSONdata exporter = new ExportStringJSONdata();
-//        exporter.exportDataToJson(new ExportStringJSONdata.JsonDataCallback(){
-//            @Override
-//            public void onDataLoaded(String cancelDelayJson, String loadFactorJson) {
-//                System.out.println("cancelDelayJson: " + cancelDelayJson);
-//                System.out.println("loadFactorJson: " + loadFactorJson);
-//            }
+//        exporter.exportDataToJson((cancelDelayJson, loadFactorJson) -> {
+////            System.out.println("cancelDelayJson: " + cancelDelayJson);
+////            System.out.println("loadFactorJson: " + loadFactorJson);
 //        });
 
 
