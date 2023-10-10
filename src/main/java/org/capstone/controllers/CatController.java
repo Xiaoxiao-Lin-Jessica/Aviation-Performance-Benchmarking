@@ -1,9 +1,8 @@
 package org.capstone.controllers;
 
 import org.capstone.LoginCallback;
-import org.capstone.model.User;
 import org.capstone.repository.UserDAO;
-import org.capstone.service.LoadData;
+import org.capstone.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,13 +51,32 @@ public class CatController {
             }
         });
 
-        // Uncomment this code to delete the database attributes.
+//         Uncomment this code to delete the database attributes.
 //        FirebaseDelete dataDelete = new FirebaseDelete();
-//        dataDelete.deleteData("All");
+//        dataDelete.deleteData("Load_Factor");
+//         The first time storing with data structure.
+//        String excelPath = "src/main/resources/static/10-23_delay_cancel.xlsx";
+//        LoadData loadData = new LoadData();
+//        loadData.loadExcelDataToFirebase(excelPath);
 
-        String excelPath = "src/main/resources/static/10-23_delay_cancel.xlsx";
-        LoadData loadData = new LoadData();
-        loadData.loadExcelDataToFirebase(excelPath);
+//         Store two excel
+//        String excelPath_1 = "src/main/resources/static/18-23load_factor.xlsx";
+//        LoadDataWithTable1 loadDataT1 = new LoadDataWithTable1();
+//        loadDataT1.loadExcelToFirebase(excelPath_1);
+        String excelPath_2 = "src/main/resources/static/delay_cancel.xlsx";
+        LoadDataWithTable2 loadDataT2 = new LoadDataWithTable2();
+        loadDataT2.loadExcel2ToFirebase(excelPath_2);
+
+//        ExportStringJSONdata exporter = new ExportStringJSONdata();
+//        exporter.exportDataToJson(new ExportStringJSONdata.JsonDataCallback(){
+//            @Override
+//            public void onDataLoaded(String cancelDelayJson, String loadFactorJson) {
+//                System.out.println("cancelDelayJson: " + cancelDelayJson);
+//                System.out.println("loadFactorJson: " + loadFactorJson);
+//            }
+//        });
+
+
 
         model.addAttribute("name", name);
         return "greeting";
