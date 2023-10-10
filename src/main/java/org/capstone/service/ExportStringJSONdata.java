@@ -26,14 +26,10 @@ public class ExportStringJSONdata {
         cancelDelayReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // 将数据转换为 JSON 字符串并添加到 JSON 对象中
                 String cancelDelayJson = dataSnapshot.getValue().toString();
-
-
                 loadfactorReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        // 将数据转换为 JSON 字符串并添加到 JSON 对象中
                         String loadFactorJson = dataSnapshot.getValue().toString();
                         callback.onDataLoaded(cancelDelayJson, loadFactorJson);
                     }

@@ -35,7 +35,6 @@ public class LoadDataWithTable2 {
 
 
             for (Row row : sheet) {
-                // 忽略表头行
                 if (row.getRowNum() == 0) {
                     continue;
                 }

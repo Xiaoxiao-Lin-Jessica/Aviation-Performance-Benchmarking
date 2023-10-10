@@ -18,7 +18,6 @@ public class LoadDataWithTable1 {
 
 
     public LoadDataWithTable1() {
-        // 获取对数据库的引用
         databaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
@@ -30,13 +29,9 @@ public class LoadDataWithTable1 {
             DatabaseReference loadFactorReference = databaseReference.child(LOAD_FACTOR);
 
             for (Row row : sheet) {
-                // 忽略表头行
                 if (row.getRowNum() == 0) {
                     continue;
                 }
-                //                if (row.getRowNum() == lastRowIndex) {
-                //                    break;
-                //                }
                 String route = row.getCell(0).getStringCellValue();
                 String departing_port = row.getCell(1).getStringCellValue();
                 String arriving_port = row.getCell(2).getStringCellValue();
