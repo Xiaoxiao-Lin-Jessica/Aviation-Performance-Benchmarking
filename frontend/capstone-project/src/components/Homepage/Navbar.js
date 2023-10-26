@@ -36,12 +36,11 @@ function Navbar({ onHelpClick, onLogoutClick }) {
                     <li>
                         <button className="dropbtn">For Airlines</button>
                         <div className="dropdown-content">
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">
-                                Overview
-                            </a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">
-                                Delay & Cancel Rate
-                            </a>
+
+                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">On-time Performance</a>
+                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Busyness Level</a>
+                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Overview</a>
+
                         </div>
                     </li>
                 </div>
@@ -58,5 +57,6 @@ function Navbar({ onHelpClick, onLogoutClick }) {
         </nav>
     );
 }
+
 
 export default Navbar;

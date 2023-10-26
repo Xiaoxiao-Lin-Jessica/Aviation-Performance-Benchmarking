@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Homepage.css';
 import Navbar from './Navbar';
 
+
 function App() {
     const [isHelpClicked, setIsHelpClicked] = useState(false);
     const [isLogoutClicked, setIsLogoutClicked] = useState(false);
@@ -24,31 +25,29 @@ function App() {
                 handleHelpClick={handleHelpClick}
                 handleLogoutClick={handleLogoutClick}
             />
-            <section className="section">
-                <div className="box-main">
-                    <div className="firstHalf">
-                        <h1 className="text-big">
-                            Related picture about Australian aviation
-                        </h1>
-                        <p className="text-small">
-                            some description about it
-                        </p>
-                    </div>
-                </div>
-            </section>
 
-            <section className="section">
-                <div className="box-main">
-                    <div className="secondHalf">
-                        <h1 className="text-big" id="program">
-                            Some text description
-                        </h1>
-                        <p className="text-small">
-                            JavaScript is the world's most popular language
-                        </p>
-                    </div>
+            <div className="main">
+                <div className="pic">
+                    <img src="/background-homepage.webp" alt="Homepage Background" />
                 </div>
-            </section>
+                {/* 遮罩层 */}
+                <div className="topLayer"></div>
+                <div className="btn">
+                    <p>Australian Aviation Data visualization</p>
+                    <button>Map &nbsp;&nbsp;&gt;</button>
+                </div>
+                {/*Text introduction*/}
+                <div class="content">
+                    <p className="text-intro">
+                        The EY Data & Analytics team was approached by airport admins and airline CEOs with the goal of building a report covering the current aviation crisis in Australia.
+                        You will be required to analyse the data provided and build an end-to-end solution to allow the ingestion of data into a model, which will be fed into a centralised analytics dashboard.
+                        This dashboard must provide insight into the current issues related to airport/flight delays, busiest routes, safety, etc and must address a set of business requirements that will be handed to them.
+                    </p>
+                </div>
+            </div>
+
+
+
 
             <footer className="footer">
                 <p className="text-footer">
@@ -60,3 +59,4 @@ function App() {
 }
 
 export default App;
+
