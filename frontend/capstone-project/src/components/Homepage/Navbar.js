@@ -1,6 +1,6 @@
 //navigation bar
-import React from 'react';
-import './Navbar.css';
+import React from "react";
+import "./Navbar.css";
 
 function Navbar({ onHelpClick, onLogoutClick }) {
     return (
@@ -8,17 +8,26 @@ function Navbar({ onHelpClick, onLogoutClick }) {
             <ul className="nav-list">
                 <div className="logo">
                     <img src="/flight-icon.png" alt="Flight Icon" />
-                    <span className="logo-text">APB</span>
+                    <span
+                        className="logo-text"
+                        href="frontend/capstone-project/src/components/Homepage/Homepage#"
+                    >
+                        APB
+                    </span>
                 </div>
                 <div className="dropdown">
                     <li>
                         <button className="dropbtn">For Route</button>
                         <div className="dropdown-content">
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">On-time Performance</a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Busyness Level</a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Seat Utilization</a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Overview</a>
-
+                            <a href="frontend/capstone-project/src/components/ForRoute/RouteOverview#">
+                                Overview
+                            </a>
+                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">
+                                Delay & Cancel Rate
+                            </a>
+                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">
+                                Busyness Level & Seat Utilization
+                            </a>
                         </div>
                     </li>
                 </div>
@@ -27,9 +36,11 @@ function Navbar({ onHelpClick, onLogoutClick }) {
                     <li>
                         <button className="dropbtn">For Airlines</button>
                         <div className="dropdown-content">
+
                             <a href="frontend/capstone-project/src/components/Homepage/Navbar#">On-time Performance</a>
                             <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Busyness Level</a>
                             <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Overview</a>
+
                         </div>
                     </li>
                 </div>

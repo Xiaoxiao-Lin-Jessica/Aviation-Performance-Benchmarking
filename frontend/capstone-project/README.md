@@ -2,15 +2,29 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Before starting
+## Before starting - set up React/project FE environment
 
-打开文件夹的地址，敲 cmd，安装以下东西：
+Go to the Node.js website to download the LTS version. Then enter the following command in the command line to check if the installation is successful:
+npm -v
+node -v
+
+If the corresponding version is displayed, the installation is successful.
+
+Then open the address of the folder, type cmd, and enter:
+npm run build
+
+A total of 6 packages are installed. If there is an error, manually install the missing packages according to the error prompt.
+The six packages are:
 npm install react react-dom
 npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
 npm install @mui/styled-engine-sc
+npm install react-router-dom
+npm install react-scripts
 
-之后才能正常测试和开发
+The last two are usually missing.
+Only after all are installed can the front-end test and development be carried out normally.
+
 
 ## Available Scripts
 
