@@ -9,13 +9,12 @@ function Navbar() {
         <nav className="navbar background">
             <ul className="nav-list">
                 <div className="logo">
-                    <img src="/flight-icon.png" alt="Flight Icon" />
-                    <span
-                        className="logo-text"
-                        href="frontend/capstone-project/src/components/Homepage/Homepage#"
-                    >
-                        APB
-                    </span>
+                    <button className="APBButton">
+                        <img src="/flight-icon.png" alt="Flight Icon" />
+                        <span className="logo-text">
+                            <a href="/">APB</a>
+                        </span>
+                    </button>
                 </div>
                 <div className="dropdown">
                     <li>
