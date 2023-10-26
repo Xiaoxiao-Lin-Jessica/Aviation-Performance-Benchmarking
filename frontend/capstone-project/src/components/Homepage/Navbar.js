@@ -1,8 +1,10 @@
 //navigation bar
 import React from "react";
 import "./Navbar.css";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 
-function Navbar({ onHelpClick, onLogoutClick }) {
+function Navbar() {
     return (
         <nav className="navbar background">
             <ul className="nav-list">
@@ -44,11 +46,18 @@ function Navbar({ onHelpClick, onLogoutClick }) {
             </ul>
 
             <div className="rightNav">
-                <button className="icon-button" onClick={onHelpClick}>
-                    <img src="/help-icon.png" alt="Help Icon" />
+                <button className="icon-button">
+                    <a href="/login">
+                        {" "}
+                        <LoginIcon />{" "}
+                    </a>
                 </button>
-                <button className="icon-button" onClick={onLogoutClick}>
-                    <img src="/logout-icon.png" alt="Logout Icon" />
+                <br />
+                <button className="icon-button">
+                    <a href="/">
+                        {" "}
+                        <LogoutIcon />{" "}
+                    </a>
                 </button>
             </div>
         </nav>
