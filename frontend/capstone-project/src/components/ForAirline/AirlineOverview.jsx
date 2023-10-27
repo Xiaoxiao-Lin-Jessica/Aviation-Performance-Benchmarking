@@ -7,11 +7,19 @@ import { models } from "powerbi-client";
 import Navbar from "../Homepage/Navbar";
 import "../DashBoard.css";
 import { AccessTokenContext } from "../../App";
+import { useAuth } from "../../AuthContext";
 
 function AirlineOverview() {
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const { airlineAccessToken, routeAccessToken } = useContext(AccessTokenContext);
+    const { isLoggedIn } = useAuth();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate("/login");
+        }
+    }, [isLoggedIn, navigate]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
