@@ -15,13 +15,15 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { useAuth } from "../AuthContext";
 
 
 const defaultTheme = createTheme();
 
-export default function SignInSide() {
+export default function UserLogin() {
     const navigate = useNavigate();
     const [error, setError] = useState(null);
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -43,9 +45,8 @@ export default function SignInSide() {
             const responseData = await response.text();
             console.log(responseData);
             if (response.ok) {
-                console.log(localStorage);
                 localStorage.setItem("token", responseData.token);
-                console.log(localStorage);
+                setIsLoggedIn(true); // Set the login state to true
                 navigate("/");
             } else {
                 //error handler

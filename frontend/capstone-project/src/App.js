@@ -1,5 +1,3 @@
-export const AccessTokenContext = React.createContext();
-
 import React from "react";
 import UserLogin from "./components/UserLogin";
 import Dashboard from "./components/DashBoard";
@@ -11,38 +9,34 @@ import RouteDelayCancel from "./components/ForRoute/RouteDelayCancel";
 import RouteBusynessSeat from "./components/ForRoute/RouteBusynessSeat";
 import AirlineOverview from "./components/ForAirline/AirlineOverview";
 import AirlineDelayCancel from "./components/ForAirline/AirlineDelayCancel";
+import {AuthProvider, useAuth} from "./AuthContext";
+export const AccessTokenContext = React.createContext();
 
 function App() {
-    let airlineAccessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2JlOTNiYTctNDQ4Mi00OWQwLWE1MTItN2M2ODE4MDk2ZTMzLyIsImlhdCI6MTY5ODM2MzQ2MiwibmJmIjoxNjk4MzYzNDYyLCJleHAiOjE2OTgzNjg2MDYsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJFMkZnWUdDMlphMDVhNkZqYmVsc01KM0hxTzN2UG5tUnZWNXArczlFN3ZTYjVrZ2xHZFZlTnVjcldUVW5uTzFwejBibVoyOWFBQT09IiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWm91IiwiZ2l2ZW5fbmFtZSI6IllhbmciLCJpcGFkZHIiOiIxMDMuNjYuMTMyLjYyIiwibmFtZSI6IllhbmcgWm91Iiwib2lkIjoiYjdhZDhjYzAtNDA3My00YmIyLTliYTEtNWY3MDI4YTA1YzNlIiwicHVpZCI6IjEwMDMyMDAyNDA1QzI1OTQiLCJyaCI6IjAuQVFvQXB6dnBlNEpFMEVtbEVueG9HQWx1TXdrQUFBQUFBQUFBd0FBQUFBQUFBQUFLQUZRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInNpZ25pbl9zdGF0ZSI6WyJrbXNpIl0sInN1YiI6ImoyT3lMZ0psYnI3VEhyZjBrRUtZMWtMcVBmeDhPLUs2OEZodzBPNlBIRkEiLCJ0aWQiOiI3YmU5M2JhNy00NDgyLTQ5ZDAtYTUxMi03YzY4MTgwOTZlMzMiLCJ1bmlxdWVfbmFtZSI6Inl6b3U5MDczQHVuaS5zeWRuZXkuZWR1LmF1IiwidXBuIjoieXpvdTkwNzNAdW5pLnN5ZG5leS5lZHUuYXUiLCJ1dGkiOiJ5U0V4RlpsTzZFbTFlNnJrSExCWEFBIiwidmVyIjoiMS4wIiwid2lkcyI6WyJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXX0.MuetC1BKm4s0FW6GciTyC_ffkWR8vqLbyk-WaNSbvyqt-5j-2vv9pvZghlMjed1NriATdanYbZTe-jb00mUKLQjEnUwwI_UzXdrbpvX66h4bUQBgtmwKeUjBD4sX6iMo2OZuBjfS2TSGNkYimpmXEVCioOK8OJMoyj2rydDMM8hKqyDdM8oCoNUVnAm8bQMZEegkukbYcUB7PX8C_vnAzZtiNGv5yUiuhwBpkTjIOmCjX8hqxORYqPoerZv_gXvN8VpBSbvVnZZKIJ3QX0n6LzSFePtR_w8i7bbHkXBF6FMvugMxcjMroG8UweDY4qTUAMqCdsxctf3-pgiBIDMobw";
-    let routeAccessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2JlOTNiYTctNDQ4Mi00OWQwLWE1MTItN2M2ODE4MDk2ZTMzLyIsImlhdCI6MTY5ODM2MzQ0NiwibmJmIjoxNjk4MzYzNDQ2LCJleHAiOjE2OTgzNjgzNzYsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBVFFBeS84VUFBQUF1azNUdDNzUk1nZUJqcThMQld1cXQ0V1JwWllLWWlXMGhCdjBlY2o1cklQejkxNzhDWUtXNHVGaEZTTUhaRkNlIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWm91IiwiZ2l2ZW5fbmFtZSI6IllhbmciLCJpcGFkZHIiOiIxMDMuNjYuMTMyLjYyIiwibmFtZSI6IllhbmcgWm91Iiwib2lkIjoiYjdhZDhjYzAtNDA3My00YmIyLTliYTEtNWY3MDI4YTA1YzNlIiwicHVpZCI6IjEwMDMyMDAyNDA1QzI1OTQiLCJyaCI6IjAuQVFvQXB6dnBlNEpFMEVtbEVueG9HQWx1TXdrQUFBQUFBQUFBd0FBQUFBQUFBQUFLQUZRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInNpZ25pbl9zdGF0ZSI6WyJrbXNpIl0sInN1YiI6ImoyT3lMZ0psYnI3VEhyZjBrRUtZMWtMcVBmeDhPLUs2OEZodzBPNlBIRkEiLCJ0aWQiOiI3YmU5M2JhNy00NDgyLTQ5ZDAtYTUxMi03YzY4MTgwOTZlMzMiLCJ1bmlxdWVfbmFtZSI6Inl6b3U5MDczQHVuaS5zeWRuZXkuZWR1LmF1IiwidXBuIjoieXpvdTkwNzNAdW5pLnN5ZG5leS5lZHUuYXUiLCJ1dGkiOiJ5T1Z0UEtfWmVFTzJkbW9ER3lNeEFBIiwidmVyIjoiMS4wIiwid2lkcyI6WyJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXX0.biNXYMThZKiUgCfDtUv-FJ7qzWoLsSgUpSiAbRMQqaob9VFZQjFgd8jE4doTjyP2HAlY3DJ84qkmN3RfwhCC3Z_VehDj8ZvEJFYjIbLiDrQxmycUWY1SvttIN29l04c6EsLLBr_vCOiecWduAm2PQN1xBb1nc8HIZWeT-s7DCq7n9c8kQ7rxn_FGfE8S-m2xM6HBWteuUqPHguOWRy6sME83WcUVoHvyovq0I17TN9uXZ-YiFWLxaP_3KLxm4rt6Pap6nFpVReNJFXzlD7Nc33Ow84WX44SAXYRt50ws7hPVWcne31L8Y3iPuYXNHTpjKYTKn6jZKyPGr1ljZ-FgNw";
+    let airlineAccessToken =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2JlOTNiYTctNDQ4Mi00OWQwLWE1MTItN2M2ODE4MDk2ZTMzLyIsImlhdCI6MTY5ODM3MzAxMiwibmJmIjoxNjk4MzczMDEyLCJleHAiOjE2OTgzNzc4MTUsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBVFFBeS84VUFBQUFJOTZhQ0VBTXBqMjRtRzNnRlJmRVIzWXI4bUpUZ0VkNkszSjlJVjZLaGFjRW1wd1pRUGhOZzNCQmtwNVl6dS9nIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWm91IiwiZ2l2ZW5fbmFtZSI6IllhbmciLCJpcGFkZHIiOiIxMDMuNjYuMTMyLjYxIiwibmFtZSI6IllhbmcgWm91Iiwib2lkIjoiYjdhZDhjYzAtNDA3My00YmIyLTliYTEtNWY3MDI4YTA1YzNlIiwicHVpZCI6IjEwMDMyMDAyNDA1QzI1OTQiLCJyaCI6IjAuQVFvQXB6dnBlNEpFMEVtbEVueG9HQWx1TXdrQUFBQUFBQUFBd0FBQUFBQUFBQUFLQUZRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInNpZ25pbl9zdGF0ZSI6WyJrbXNpIl0sInN1YiI6ImoyT3lMZ0psYnI3VEhyZjBrRUtZMWtMcVBmeDhPLUs2OEZodzBPNlBIRkEiLCJ0aWQiOiI3YmU5M2JhNy00NDgyLTQ5ZDAtYTUxMi03YzY4MTgwOTZlMzMiLCJ1bmlxdWVfbmFtZSI6Inl6b3U5MDczQHVuaS5zeWRuZXkuZWR1LmF1IiwidXBuIjoieXpvdTkwNzNAdW5pLnN5ZG5leS5lZHUuYXUiLCJ1dGkiOiJXaVl4TVA0NXBVNm1DQ0d5MTlOY0FBIiwidmVyIjoiMS4wIiwid2lkcyI6WyJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXX0.Pxdyiyf57PDnrTKJLY66ntBMpPjM-0632QdpQgoE2Hsn_6bjyFEjabKfPkaxg1Oy-r3rR-PO30UqqNgjp1DbrH8ytLYfB78IhW_phFP6yrV1mA8XI0bNoAbMMrLpky7SewQdyJZu6lKO1_k_vDD86G98F1AQ0nUJFKGQni70e5qdljB05wVbeaQclfCbNBsx5BC_QFVbFs8kGe3sNR6oCK58DEuBrWdW7pVbr3wnFmqQQ6dbZWc0OLW_P9vQbnmWy9E4HIw_WIUfZrHV5CfSzoHLHb4ImAmFEuPrJH29kdcGYMNvj6ScMehxXCUHAtZQQ0NNROWgMWoNCJcs99nRgg"
+    let routeAccessToken =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2JlOTNiYTctNDQ4Mi00OWQwLWE1MTItN2M2ODE4MDk2ZTMzLyIsImlhdCI6MTY5ODM3MjQwNiwibmJmIjoxNjk4MzcyNDA2LCJleHAiOjE2OTgzNzgwMTEsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBVFFBeS84VUFBQUFkbldvMmpXdE9ZWFVOekRGZUhSaUtXKzlhY0lyT3NGR3phZFY2cWsrZmZmU0hhWkJCQ1Y4emFFOUVLY3o1dkh1IiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWm91IiwiZ2l2ZW5fbmFtZSI6IllhbmciLCJpcGFkZHIiOiIxMDMuNjYuMTMyLjYwIiwibmFtZSI6IllhbmcgWm91Iiwib2lkIjoiYjdhZDhjYzAtNDA3My00YmIyLTliYTEtNWY3MDI4YTA1YzNlIiwicHVpZCI6IjEwMDMyMDAyNDA1QzI1OTQiLCJyaCI6IjAuQVFvQXB6dnBlNEpFMEVtbEVueG9HQWx1TXdrQUFBQUFBQUFBd0FBQUFBQUFBQUFLQUZRLiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInNpZ25pbl9zdGF0ZSI6WyJrbXNpIl0sInN1YiI6ImoyT3lMZ0psYnI3VEhyZjBrRUtZMWtMcVBmeDhPLUs2OEZodzBPNlBIRkEiLCJ0aWQiOiI3YmU5M2JhNy00NDgyLTQ5ZDAtYTUxMi03YzY4MTgwOTZlMzMiLCJ1bmlxdWVfbmFtZSI6Inl6b3U5MDczQHVuaS5zeWRuZXkuZWR1LmF1IiwidXBuIjoieXpvdTkwNzNAdW5pLnN5ZG5leS5lZHUuYXUiLCJ1dGkiOiJkQnJ0QV9PMXowcWE5ckVCSHAxVEFBIiwidmVyIjoiMS4wIiwid2lkcyI6WyJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXX0.duGzpwxJdm8lARvSXAjB-8Lh74RJFXwaXglQF9Qe0u7STpj4s98DjbSqXsaX03L7558XUoX4HhbeRhM61lxVtcfBU1XAE5aAWKYALrWlNzPPz1-VrP78JRZioVA7NpDrQia68g0Q43R8y8MEluM9ZkK1jk3qJU1rBrnWBdzqY4nxiuiA8NR2_wGvO_DvbzDfxRgRY87w3msw9NlVL4jjN8iBA8hQIaKM90w8nKy5LvHnyURoODeP3flJZv1smyzcvzC8QOIdtvfir99yv9QDRBC2-fkpd4a4e61mMxgDof0SG4PPFwMoSGLkPSEm9LhNbR5Xvjtu7sZXtYdYP3qEZg"
+    // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
 
     return (
-        <AccessTokenContext.Provider value={{airlineAccessToken, routeAccessToken}}>
-            <Router>
-                <Routes>
-                    <Route path="/login" element={<UserLogin/>}/>
-                    <Route path="/" element={<Homepage/>}/>
-                    <Route path="/ForRouteOverview" element={<RouteOverview/>}/>
-                    <Route
-                        path="/ForRouteDelayCancel"
-                        element={<RouteDelayCancel/>}
-                    />
-                    <Route
-                        path="/ForRouteBusynessSeat"
-                        element={<RouteBusynessSeat/>}
-                    />
-                    <Route
-                        path="/ForAirlineOverview"
-                        element={<AirlineOverview/>}
-                    />
-                    <Route
-                        path="/ForAirlineDelayCancel"
-                        element={<AirlineDelayCancel/>}
-                    />
-                    {/* Add additional routes */}
-                </Routes>
-            </Router>
-        </AccessTokenContext.Provider>
+        <AuthProvider>
+            <AccessTokenContext.Provider value={{airlineAccessToken, routeAccessToken}}>
+                <Router>
+                    <Routes>
+                        <Route path="/login" element={<UserLogin />} />
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/ForRouteOverview" element={<RouteOverview/>}/>
+                        <Route path="/ForRouteDelayCancel" element={<RouteDelayCancel/>} />
+                        <Route path="/ForRouteBusynessSeat" element={<RouteBusynessSeat/>} />
+                        <Route path="/ForAirlineOverview" element={<AirlineOverview/>} />
+                        <Route path="/ForAirlineDelayCancel" element={<AirlineDelayCancel/>} />
+                        {/* Add additional routes */}
+                    </Routes>
+                </Router>
+            </AccessTokenContext.Provider>
+        </AuthProvider>
     );
 }
 

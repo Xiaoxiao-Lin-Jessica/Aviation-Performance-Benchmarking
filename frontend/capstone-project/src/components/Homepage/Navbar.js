@@ -3,8 +3,17 @@ import React from "react";
 import "./Navbar.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
+import { useAuth } from "../../AuthContext";
 
 function Navbar() {
+
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const handleRestrictedClick = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault(); // Stop the default pop out window
+            alert("Please Log in");
+        }
+    };
     return (
         <nav className="navbar background">
             <ul className="nav-list">
@@ -18,13 +27,13 @@ function Navbar() {
                 </div>
                 <div className="dropdown">
                     <li>
-                        <button className="dropbtn">For Route</button>
+                        <button className="dropbtn" onClick={handleRestrictedClick}>For Route</button>
                         <div className="dropdown-content">
-                            <a href="/ForRouteOverview">Overview</a>
-                            <a href="/ForRouteDelayCancel">
+                            <a href="/ForRouteOverview" onClick={handleRestrictedClick}>Overview</a>
+                            <a href="/ForRouteDelayCancel" onClick={handleRestrictedClick}>
                                 Delay & Cancel Rate
                             </a>
-                            <a href="/ForRouteBusynessSeat">
+                            <a href="/ForRouteBusynessSeat" onClick={handleRestrictedClick}>
                                 Busyness Level & Seat Utilization
                             </a>
                         </div>
@@ -33,31 +42,28 @@ function Navbar() {
 
                 <div className="dropdown">
                     <li>
-                        <button className="dropbtn">For Airlines</button>
+                        <button className="dropbtn" onClick={handleRestrictedClick}>For Airlines</button>
                         <div className="dropdown-content">
-                            <a href="/ForAirlineOverview">Overview</a>
-                            <a href="/ForAirlineDelayCancel">
+                            <a href="/ForAirlineOverview" onClick={handleRestrictedClick}>Overview</a>
+                            <a href="/ForAirlineDelayCancel" onClick={handleRestrictedClick}>
                                 Delay & Cancel Rate
                             </a>
                         </div>
                     </li>
                 </div>
             </ul>
-
             <div className="rightNav">
-                <button className="icon-button">
-                    <a href="/login">
-                        {" "}
-                        <LoginIcon />{" "}
-                    </a>
-                </button>
-                <br />
-                <button className="icon-button">
-                    <a href="/">
-                        {" "}
-                        <LogoutIcon />{" "}
-                    </a>
-                </button>
+                {isLoggedIn ? (
+                    <button className="icon-button" onClick={() => {
+                        setIsLoggedIn(false);
+                    }}>
+                        <a href="/"><LogoutIcon /></a>
+                    </button>
+                ) : (
+                    <button className="icon-button">
+                        <a href="/login"><LoginIcon /></a>
+                    </button>
+                )}
             </div>
         </nav>
     );
