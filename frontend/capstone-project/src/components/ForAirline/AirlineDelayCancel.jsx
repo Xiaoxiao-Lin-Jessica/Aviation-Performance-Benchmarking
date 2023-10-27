@@ -80,7 +80,11 @@ function AirlineDelayCancel() {
                         [
                             "loaded",
                             function () {
+                                window.report.setPage("ReportSectioncbfa90aad9942930e592");
                                 console.log("Report loaded");
+                                window.report.getPages().then(pages => {
+                                    console.log(pages); // This will print all the pages in the report
+                                });
                             },
                         ],
                         [

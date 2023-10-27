@@ -80,7 +80,11 @@ function AirlineOverview() {
                         [
                             "loaded",
                             function () {
+                                window.report.setPage("ReportSection");
                                 console.log("Report loaded");
+                                window.report.getPages().then(pages => {
+                                    console.log(pages); // This will print all the pages in the report
+                                });
                             },
                         ],
                         [

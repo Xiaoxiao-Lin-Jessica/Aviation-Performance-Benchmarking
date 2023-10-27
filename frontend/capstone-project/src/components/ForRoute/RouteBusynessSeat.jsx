@@ -78,7 +78,11 @@ function RouteBusynessSeat() {
                         [
                             "loaded",
                             function () {
+                                window.report.setPage("ReportSectionf7092d6bc776543b4817");
                                 console.log("Report loaded");
+                                window.report.getPages().then(pages => {
+                                    console.log(pages); // This will print all the pages in the report
+                                });
                             },
                         ],
                         [
