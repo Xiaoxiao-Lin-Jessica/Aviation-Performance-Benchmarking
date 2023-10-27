@@ -4,6 +4,8 @@ import "./Navbar.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import { useAuth } from "../../AuthContext";
+import { Link } from "react-router-dom";
+
 
 function Navbar() {
 
@@ -18,13 +20,14 @@ function Navbar() {
         <nav className="navbar background">
             <ul className="nav-list">
                 <div className="logo">
-                    <button className="APBButton">
-                        <img src="/flight-icon.png" alt="Flight Icon" />
-                        <span className="logo-text">
-                            <a href="/">APB</a>
-                        </span>
-                    </button>
+                    <Link to="/">
+                        <button className="APBButton">
+                            <img src="/flight-icon.png" alt="Flight Icon" />
+                            <span className="logo-text">APB</span>
+                        </button>
+                    </Link>
                 </div>
+
                 <div className="dropdown">
                     <li>
                         <button className="dropbtn" onClick={handleRestrictedClick}>For Route</button>
