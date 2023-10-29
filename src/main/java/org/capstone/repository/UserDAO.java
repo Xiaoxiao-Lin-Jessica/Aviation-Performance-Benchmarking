@@ -4,6 +4,7 @@ import com.google.firebase.database.*;
 import com.google.firebase.auth.*;
 import org.capstone.LoginCallback;
 import org.capstone.model.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UserDAO {
 
@@ -17,6 +18,10 @@ public class UserDAO {
 
     // Add a user into Firebase Realtime Database. Use "email" as key, "User" object as value.
     public void addUser(User user) {
+        // Hash the user's password
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
         // Using email as key, replacing '.' to ',', since Firebase does not allow key with'.'
         String emailKey = user.getEmail().replace('.', ',');
         mDatabase.child(emailKey).setValueAsync(user);
@@ -36,15 +41,8 @@ public class UserDAO {
                 if (user != null) {
                     // <email key> exist in "User" table.
                     String storedHashedPassword = user.getPassword();
-                    if (storedHashedPassword.equals(password)) {
-                        // <password> matches "User" -> <email key> -> "password".
-//                        System.out.println("Login success!");
-                        callback.onLoginResult(true);
-                    } else {
-                        // <password> does not match "User" -> <email key> -> "password".
-//                        System.out.println("Wrong password!");
-                        callback.onLoginResult(false);
-                    }
+                    // <password> hash code matches "User" -> "password" hash code.
+                    callback.onLoginResult(BCrypt.checkpw(password, user.getPassword()));
                 } else {
                     // <email key> not exist in "User" table.
 //                    System.out.println("User not Exist");
