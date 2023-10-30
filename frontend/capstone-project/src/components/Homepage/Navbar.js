@@ -1,31 +1,42 @@
 //navigation bar
 import React from "react";
 import "./Navbar.css";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
+import { useAuth } from "../../AuthContext";
+import { Link } from "react-router-dom";
 
-function Navbar({ onHelpClick, onLogoutClick }) {
+
+function Navbar() {
+
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const handleRestrictedClick = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault(); // Stop the default pop out window
+            alert("Please Log in");
+        }
+    };
     return (
         <nav className="navbar background">
             <ul className="nav-list">
                 <div className="logo">
-                    <img src="/flight-icon.png" alt="Flight Icon" />
-                    <span
-                        className="logo-text"
-                        href="frontend/capstone-project/src/components/Homepage/Homepage#"
-                    >
-                        APB
-                    </span>
+                    <Link to="/">
+                        <button className="APBButton">
+                            <img src="/flight-icon.png" alt="Flight Icon" />
+                            <span className="logo-text">APB</span>
+                        </button>
+                    </Link>
                 </div>
+
                 <div className="dropdown">
                     <li>
-                        <button className="dropbtn">For Route</button>
+                        <button className="dropbtn" onClick={handleRestrictedClick}>For Route</button>
                         <div className="dropdown-content">
-                            <a href="frontend/capstone-project/src/components/ForRoute/RouteOverview#">
-                                Overview
-                            </a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">
+                            <a href="/ForRouteOverview" onClick={handleRestrictedClick}>Overview</a>
+                            <a href="/ForRouteDelayCancel" onClick={handleRestrictedClick}>
                                 Delay & Cancel Rate
                             </a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">
+                            <a href="/ForRouteBusynessSeat" onClick={handleRestrictedClick}>
                                 Busyness Level & Seat Utilization
                             </a>
                         </div>
@@ -34,29 +45,31 @@ function Navbar({ onHelpClick, onLogoutClick }) {
 
                 <div className="dropdown">
                     <li>
-                        <button className="dropbtn">For Airlines</button>
+                        <button className="dropbtn" onClick={handleRestrictedClick}>For Airlines</button>
                         <div className="dropdown-content">
-
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">On-time Performance</a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Busyness Level</a>
-                            <a href="frontend/capstone-project/src/components/Homepage/Navbar#">Overview</a>
-
+                            <a href="/ForAirlineOverview" onClick={handleRestrictedClick}>Overview</a>
+                            <a href="/ForAirlineDelayCancel" onClick={handleRestrictedClick}>
+                                Delay & Cancel Rate
+                            </a>
                         </div>
                     </li>
                 </div>
             </ul>
-
             <div className="rightNav">
-                <button className="icon-button" onClick={onHelpClick}>
-                    <img src="/help-icon.png" alt="Help Icon" />
-                </button>
-                <button className="icon-button" onClick={onLogoutClick}>
-                    <img src="/logout-icon.png" alt="Logout Icon" />
-                </button>
+                {isLoggedIn ? (
+                    <button className="icon-button" onClick={() => {
+                        setIsLoggedIn(false);
+                    }}>
+                        <a href="/"><LogoutIcon /></a>
+                    </button>
+                ) : (
+                    <button className="icon-button">
+                        <a href="/login"><LoginIcon /></a>
+                    </button>
+                )}
             </div>
         </nav>
     );
 }
-
 
 export default Navbar;

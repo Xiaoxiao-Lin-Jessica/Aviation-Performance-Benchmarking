@@ -1,6 +1,7 @@
 package org.capstone.controllers;
 
 import org.capstone.LoginCallback;
+import org.capstone.model.User;
 import org.capstone.repository.UserDAO;
 import org.capstone.service.*;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ public class CatController {
 
 
         // Uncomment this block of code to add a new user in database.
-//        User user = new User("admin", "admin@test.com","admin123");
+//        User user = new User("admin@test.com","admin123");
 //        UserDAO userDAO = new UserDAO();
 //        userDAO.addUser(user);
 

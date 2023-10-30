@@ -28,6 +28,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.13.0'  // Use the version that matches your other Jackson dependencies
     implementation 'org.json:json:20210307'
+    // Add the bcrypt dependency for encryption.
+    implementation 'org.mindrot:jbcrypt:0.4'
+
 }
 
 test {
