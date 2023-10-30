@@ -21,36 +21,6 @@ function RouteOverview() {
         }
     }, [isLoggedIn, navigate]);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        try {
-            const response = await fetch(
-                "http://localhost:8080/ForRouteOverview",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json", //still need or not??
-                    },
-                }
-            );
-
-            const responseData = await response.json();
-            console.log(responseData);
-            if (response.ok) {
-                console.log(localStorage);
-                localStorage.setItem("token", responseData.token);
-                console.log(localStorage);
-                navigate("/ForRouteOverview");
-            } else {
-                //error handler
-                setError(responseData.message || "An error occurred");
-            }
-        } catch (err) {
-            setError(err.message);
-            console.log(err);
-        }
-    };
 
     return (
         <div>
