@@ -3,6 +3,7 @@ import "./Homepage.css";
 import Navbar from "./Navbar";
 import { useAuth } from "../../AuthContext";
 import AustralianMap from "../Map/AustralianMap";
+import {Link} from "react-router-dom";
 
 function Homepage() {
     const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -24,9 +25,11 @@ function Homepage() {
                 <div className="topLayer"></div>
                 <div className="btn">
                     <p>Australian Aviation Data visualization</p>
-                    <button>
-                        <a href="/Map">Map &nbsp;&nbsp;&gt;</a>
-                    </button>
+                    <Link to="/Map">
+                        <button>
+                            Map &nbsp;&nbsp;&gt;
+                        </button>
+                    </Link>
                 </div>
                 {}
                 <div class="content">
