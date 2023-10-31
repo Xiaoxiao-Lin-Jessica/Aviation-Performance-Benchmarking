@@ -34,17 +34,14 @@ function Homepage() {
                 {}
                 <div class="content">
                     <p className="text-intro">
-                        The EY Data & Analytics team was approached by airport
-                        admins and airline CEOs with the goal of building a
-                        report covering the current aviation crisis in
-                        Australia. You will be required to analyse the data
-                        provided and build an end-to-end solution to allow the
-                        ingestion of data into a model, which will be fed into a
-                        centralised analytics dashboard. This dashboard must
-                        provide insight into the current issues related to
-                        airport/flight delays, busiest routes, safety, etc and
-                        must address a set of business requirements that will be
-                        handed to them.
+                        Welcome to our aviation analytics dashboard,
+                        designed specifically for the Australian aviation sector.
+                        Here, we delve deep into the data to provide you with valuable insights
+                        into airport and flight delays, busiest travel routes, and more.
+                        Our goal is to empower airport administrators, airline CEOs, and other stakeholders with
+                        the information they need to make informed decisions. By leveraging the power of data,
+                        we aim to address the current challenges in the industry, optimize operations,
+                        and pave the way for a more efficient and safer aviation future in Australia.
                     </p>
                 </div>
             </div>
