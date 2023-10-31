@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: sticky;
-    top: 0;
+    position: relative;
+    top: 1px;
     cursor: pointer;
     z-index: 3;
     height: 60px;
@@ -12,6 +12,7 @@
 .nav-list {
     width: 70%;
     display: flex;
+    position: relative;
     align-items: center;
 }
 
@@ -19,6 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 /* Navigation bar text style*/
