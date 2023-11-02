@@ -39,6 +39,8 @@ To use this platform, you will need to set up the appropriate environment:
 1. **Node.js Environment**: Download and configure Node.js. [Follow the setup instructions here.](https://nodejs.org/en/download)
 2. **Java Virtual Machine**: Use SDK 11.
 
+The PowerBI report is expired in an hour, please contact us to refresh the access token.
+
 ## Installation
 
 To get this project up and running on your local machine for development and testing purposes, follow these steps:
