@@ -36,8 +36,8 @@ We believe that this platform will not only bridge the information gap but also 
 
 To use this platform, you will need to set up the appropriate environment:
 
-1. **Node.js Environment**: Download and configure Node.js. [Follow the setup instructions here.](link-to-nodejs-setup)
-2. **Java Virtual Machine**: Use SDK 11. [Installation guide.](link-to-jvm-sdk-11-setup)
+1. **Node.js Environment**: Download and configure Node.js. [Follow the setup instructions here.](https://nodejs.org/en/download)
+2. **Java Virtual Machine**: Use SDK 11.
 
 ## Installation
 
