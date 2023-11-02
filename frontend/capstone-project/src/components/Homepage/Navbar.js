@@ -18,6 +18,7 @@ function Navbar() {
             alert("Please Log in");
         }
     };
+
     return (
         // The main navigation bar
         <nav className="navbar background">
