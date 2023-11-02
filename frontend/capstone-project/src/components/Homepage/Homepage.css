@@ -1,10 +1,10 @@
+/* Resetting margin and padding for all elements */
 * {
     margin: 0;
     padding: 0;
 }
 
-
-
+/* Main content styling */
 .main {
     background: rgb(255, 255, 255);
     background-blend-mode: darken;
@@ -15,52 +15,57 @@
     z-index: 1;
 }
 
-
+/* Footer styling */
 .footer {
-    background-color: #000;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5%;
+    background-color: white;
+    border-top: 1px solid #e1e1e1;
     width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    box-sizing: border-box; /* Ensures padding does not add extra width */
 }
 
+/* Text in the footer styling */
 .text-footer {
     text-align: center;
-    padding: 30px 0;
-    font-family: 'Ubuntu', sans-serif;
-    display: flex;
-    justify-content: center;
-    color: #fff;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #7c7c7c;
+    font-size: 14px;
 }
 
-
+/* Image in the main content styling */
 .main .pic img {
     width: 100%;
-    height: 550px;
+    height: 650px;
     position: absolute;
     top: 20px;
     left: 0;
     z-index: 1;
 }
 
+/* Styling of a layer on top of the image */
 .main .topLayer {
     width: 100%;
-    height: 550px; /* same height with background picture  */
+    height: 650px;
     position: absolute;
-    top: 20px; /* same with background picture */
+    top: 20px;
     left: 0;
     background-color: #000;
     opacity: 0.5;
     z-index: 2;
 }
 
+/* Button inside the main content styling */
 .main .btn {
     width: 500px;
     height: 300px;
-    /*test*/
-    /*background-color: blue;*/
     position: absolute;
-    top: 200px;
+    top: 260px;
     margin-top: -150px;
     right: 50%;
     margin-right: -250px;
@@ -68,52 +73,60 @@
     z-index: 3;
     border: 0;
 }
-.main .btn p{
+
+/* Paragraph text inside the button styling */
+.main .btn p {
     padding-top: 100px;
-    color:#fff;
+    color: #fff;
     font-size: 40px;
-    font-family: "微软雅黑";
+    font-family: 'Arial', sans-serif;
     font-weight: bold;
 }
-.main .btn button{
+
+/* Button inside the button container styling */
+.main .btn button {
     margin-top: 50px;
     width: 200px;
     height: 60px;
-    color:#fff;
-    font-family: "微软雅黑";
-    font-size: 14px;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
     background-color: #F5704F;
     border-radius: 8px;
     text-align: center;
     font-weight: bold;
-    border:0;
+    border: 0;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     cursor: pointer;
 }
 
-.main .btn button:hover{
+/* Hover effect for the button */
+.main .btn button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+/* Content below the image styling */
 .content {
     position: absolute;
-    top: 550px;
+    top: 650px;
     left: 0;
     width: 100%;
     padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Introduction text styling */
 .text-intro {
     font-size: 22px;
     padding-top: 50px;
     clear: both;
     font-size: 22px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     font-style: italic;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin-left: 200px;
+    margin-right: 200px;
+    font-family: 'Arial', sans-serif;
 }
 
 

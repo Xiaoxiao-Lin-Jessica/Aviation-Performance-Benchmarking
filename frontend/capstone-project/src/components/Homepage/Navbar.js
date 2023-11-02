@@ -8,15 +8,18 @@ import { Link } from "react-router-dom";
 
 
 function Navbar() {
-
+    // Destructuring to get the `isLoggedIn` state and its updater function from the authentication context
     const { isLoggedIn, setIsLoggedIn } = useAuth();
+    // Handler function for clicks on restricted areas
     const handleRestrictedClick = (e) => {
+        // If the user is not logged in
         if (!isLoggedIn) {
             e.preventDefault(); // Stop the default pop out window
             alert("Please Log in");
         }
     };
     return (
+        // The main navigation bar
         <nav className="navbar background">
             <ul className="nav-list">
                 <div className="logo">
@@ -55,6 +58,7 @@ function Navbar() {
                     </li>
                 </div>
             </ul>
+
             <div className="rightNav">
                 {isLoggedIn ? (
                     <button className="icon-button" onClick={() => {

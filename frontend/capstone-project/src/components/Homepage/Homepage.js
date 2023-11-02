@@ -5,9 +5,12 @@ import { useAuth } from "../../AuthContext";
 import AustralianMap from "../Map/AustralianMap";
 import {Link} from "react-router-dom";
 
+// Define the Homepage functional component
 function Homepage() {
+    // Destructure methods from the authentication context
     const { isLoggedIn, setIsLoggedIn } = useAuth();
 
+    // Render the component
     return (
         <div>
             <Navbar
@@ -44,6 +47,8 @@ function Homepage() {
                         and pave the way for a more efficient and safer aviation future in Australia.
                     </p>
                 </div>
+
+
             </div>
 
             <footer className="footer">
