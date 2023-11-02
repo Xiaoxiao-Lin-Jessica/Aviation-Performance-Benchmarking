@@ -41,17 +41,19 @@ To use this platform, you will need to set up the appropriate environment:
 
 ## Installation
 
-Provide step-by-step series of examples that tell you how to get a development environment running.
+To get this project up and running on your local machine for development and testing purposes, follow these steps:
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/Capstone-Aviation-Project-Benchmarking.git
+# Clone the repository using SSH
+git clone git@github.sydney.edu.au:yzou9073/Capstone.git
 
 # Navigate to the project directory
-cd Capstone-Aviation-Project-Benchmarking
+cd Capstone
 
-# Install dependencies
+# Install dependencies for the front-end
+# Assuming you are in the root directory where 'package.json' is located
 npm install
 
-# Start the development server
+# Start the development server for the React front-end
 npm start
+
