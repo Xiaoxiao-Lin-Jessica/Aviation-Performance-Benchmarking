@@ -1,21 +1,24 @@
+/* Styling for the main navigation bar */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;                   /* Display the items in a row */
+    align-items: center;             /* Center items vertically */
+    justify-content: center;         /* Center items horizontally */
     position: relative;
-    top: 1px;
-    cursor: pointer;
-    z-index: 3;
-    height: 60px;
+    top: 1px;                       /* Slight offset from the top */
+    cursor: pointer;                /* Change cursor to pointer on hover */
+    z-index: 3;                     /* Stack order */
+    height: 60px;                   /* Height of the navbar */
 }
 
+/* Styling for the list of navigation items */
 .nav-list {
-    width: 70%;
+    width: 70%;                     /* Take up 70% of parent width */
     display: flex;
     position: relative;
     align-items: center;
 }
 
+/* Styling for the logo section */
 .logo {
     display: flex;
     justify-content: center;
@@ -23,111 +26,94 @@
     position: relative;
 }
 
-/* Navigation bar text style*/
+/* Styling for the text inside the logo section */
 .logo-text {
     color: black;
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 20px;                /* Font size */
+    font-weight: 900;               /* Boldness of the font */
 }
 
+/* Styling for the logo image */
 .logo img {
     width: 50px;
-    border-radius: 50px;
+    border-radius: 50px;            /* Make the image circular */
 }
 
-/* Style drop-down button*/
-.dropbtn {
+/* General button style */
+.dropbtn, .APBButton, .icon-button {
     background-color: white;
     color: black;
     padding: 16px;
     font-size: 16px;
-    border: none;
-    cursor: pointer; /*When the mouse hovers over the button, the mouse cursor changes to a hand shape to indicate that it is clickable*/
-}
-.APBButton {
-    background-color: white;
-    color: black;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer; /*When the mouse hovers over the button, the mouse cursor changes to a hand shape to indicate that it is clickable*/
+    border: none;                   /* Remove the default border */
+    cursor: pointer;                /* Indicate that it's clickable */
 }
 
-.icon-button {
-    background-color: white;
-    color: black;
-    /*padding: 16px;*/
-    font-size: 16px;
-    border: none;
-}
-
+/* Container for dropdown items */
 .dropdown {
     position: relative;
-    display: inline-block;
-    z-index: 4;
+    display: inline-block;          /* Display inline but allow block styling */
+    z-index: 4;                     /* Stack order */
 }
 
+/* Hidden dropdown content styling */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    display: none;                  /* Hide by default */
+    position: absolute;             /* Position relative to nearest positioned ancestor */
+    background-color: #f9f9f9;     /* Background color */
+    min-width: 160px;               /* Minimum width */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Shadow effect */
     z-index: 6;
 }
 
+/* Styling for links within dropdown */
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
-    text-decoration: none;
+    text-decoration: none;          /* Remove underlines from links */
     display: block;
     z-index: 5;
 }
 
-/* Change style when mouseover button */
+/* Hover effect for dropdown links */
 .dropdown-content a:hover {
     background-color: #f1f1f1;
     z-index: 5;
 }
 
-/* Show dropdown content area when hovering over dropdown button */
+/* Show dropdown when hovering over container */
 .dropdown:hover .dropdown-content {
     display: block;
     z-index: 5;
 }
-/*Change the style of dropdown button when hovering over dropdown container*/
+
+/* Style changes for button when hovering over dropdown */
 .dropdown:hover .dropbtn {
     background-color: darkgrey;
     z-index: 5;
 }
 
+/* Styling for each list item in nav list */
 .nav-list li {
-    list-style: none;
+    list-style: none;               /* Remove bullet points */
     padding: 26px 30px;
 }
 
+/* Styling for anchor tags within nav list items */
 .nav-list li a {
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none;          /* Remove underlines */
     color: #000;
 }
 
+/* Hover effect for anchor tags within nav list items */
 .nav-list li a:hover {
     color: grey;
 }
 
-/*
-.rightNav {
-  width: 30%;
-  text-align: right;
-}
-*/
-
+/* Styling for images within the right navigation section */
 .rightNav img {
     width: 30px;
     height: 30px;
-    margin: 0 20px;
-    /*
-    filter: invert(100%);
-    */
+    margin: 0 20px;                 /* Spacing between images */
 }
