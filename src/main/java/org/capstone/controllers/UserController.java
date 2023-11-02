@@ -11,6 +11,7 @@ import java.util.concurrent.CompletableFuture;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
+    // Handle the user login request.
     @PostMapping(value="/login")//,produces = MediaType.APPLICATION_JSON_VALUE
     public CompletableFuture<ResponseEntity<String>> login(@RequestBody User user) {
         CompletableFuture<ResponseEntity<String>> future = new CompletableFuture<>();

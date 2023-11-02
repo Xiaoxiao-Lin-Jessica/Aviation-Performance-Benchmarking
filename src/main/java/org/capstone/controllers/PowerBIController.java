@@ -146,6 +146,7 @@ public class PowerBIController {
         return future;
     }
 
+    // Correct the string to json string and save it to Excel file
     @GetMapping("/api/get-load-factor-excel")
     public CompletableFuture<String> getLoadFactorExcel() {
         CompletableFuture<String> future = new CompletableFuture<>();
