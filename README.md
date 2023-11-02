@@ -37,7 +37,10 @@ We believe that this platform will not only bridge the information gap but also 
 
 To use this platform, you will need to set up the appropriate environment:
 
-1. **Node.js Environment**: Download and configure Node.js. [Follow the setup instructions here.](https://nodejs.org/en/download)
+1. **Node.js Environment**: Download the LTS version and configure Node.js. [Follow the setup instructions here.](https://nodejs.org/en/download)  
+If you not sure whether you have Node.js installed, run the following command in your terminal to check:  
+`npm -v` and `node -v`
+Once finish download and install, use the same command from above in your termial to check if the corresponding version is displayed, the installation is successful.
 2. **Java Virtual Machine**: Use SDK 11.
 
 The PowerBI report is expired in an hour, please contact us to refresh the access token.
@@ -52,12 +55,25 @@ git clone git@github.sydney.edu.au:yzou9073/Capstone.git
 
 # Navigate to the project directory
 cd Capstone
+cd frontend
+cd capstone-project
 
 # Install dependencies for the front-end
 # Where 'package.json' is located
 npm install
 
-# Start the development server for the React front-end
+####Notes
+There are high chance that some dependencies will not install successfully while using the above code. After normal installation, if an error occurs when running the front end of this project, please manually install the corresponding dependencies according to the error prompts.
+The following code is prioritized that shows a high to low chance of the frontend dependencies needing to be installed manually:
+
+npm install react-scripts
+npm install react-router-dom
+npm install react react-dom
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+npm install @mui/styled-engine-sc
+
+# Start the development server 
 npm start
 
 # For backend, please run "MyApplication.java".
