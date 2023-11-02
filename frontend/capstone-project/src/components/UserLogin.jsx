@@ -1,3 +1,4 @@
+// Importing required dependencies and components from MUI and React.
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -5,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -14,17 +14,19 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { useAuth } from "../AuthContext";
 
-
+// Setting a default theme for MUI components.
 const defaultTheme = createTheme();
 
+// UserLogin component for handling user sign-in.
 export default function UserLogin() {
+    // Hooks for routing and state management.
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const { isLoggedIn, setIsLoggedIn } = useAuth();
 
+    // Function to handle the form submission.
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -33,11 +35,12 @@ export default function UserLogin() {
             password: data.get("password"),
         };
         try {
+            // Sending login request to the server.
             const response = await fetch("http://localhost:8080/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    'Accept': 'text/plain',
+                    Accept: "text/plain",
                 },
                 body: JSON.stringify(user),
             });
@@ -45,11 +48,12 @@ export default function UserLogin() {
             const responseData = await response.text();
             console.log(responseData);
             if (response.ok) {
+                // On successful login, save the token and update login status.
                 localStorage.setItem("token", responseData.token);
-                setIsLoggedIn(true); // Set the login state to true
-                navigate("/");
+                setIsLoggedIn(true); // Set the login state to true.
+                navigate("/"); // Navigate to the homepage.
             } else {
-                //error handler
+                // Handle errors during login
                 setError(responseData.message || "invalid email or password");
             }
         } catch (err) {
@@ -57,7 +61,7 @@ export default function UserLogin() {
             console.log(err);
         }
     };
-
+    // Handle errors during login.
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid container component="main" sx={{ height: "100vh" }}>
@@ -109,6 +113,7 @@ export default function UserLogin() {
                             noValidate
                             sx={{ mt: 1 }}
                         >
+                            {/* Input fields for email and password */}
                             <TextField
                                 margin="normal"
                                 required

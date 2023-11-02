@@ -1,3 +1,4 @@
+// Importing required dependencies and components.
 import react from "react";
 import { PowerBIEmbed } from "powerbi-client-react";
 import { models } from "powerbi-client";
@@ -7,23 +8,33 @@ import { AccessTokenContext } from "../../App";
 import { useContext } from "react";
 
 function AustralianMap() {
-
+    // Accessing the tokens.
     const { mapAccessToken } = useContext(AccessTokenContext);
+    
+    // Return statement to return the Australian map Power BI report.
     return (
         <div>
             <Navbar />
             <PowerBIEmbed
                 className="powerbi"
                 embedConfig={{
-                    type: "report", // Supported types: report, dashboard, tile, visual, qna, paginated report and create
-                    //new power bi item id= change here
+                    // Define the type of Power BI item, supported types: report, dashboard, tile, visual, qna, paginated report and create.
+                    type: "report", 
+                    
+                    //Unique Power BI report ID, if input a new Power BI item, modify the corresponding ID as well.
                     id: "5560b482-6de1-49e1-b24d-9e799027c309",
-                    //new power bi item URL= change here
+                    
+                    //Power BI embed URL for the report, if input a new Power BI item, modify the corresponding URL as well.
                     embedUrl:
                         "https://app.powerbi.com/reportEmbed?reportId=5560b482-6de1-49e1-b24d-9e799027c309&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVNPVVRILUVBU1QtQVNJQS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsidXNhZ2VNZXRyaWNzVk5leHQiOnRydWV9fQ%3d%3d",
-                    //new power bi item token = change here
-                    accessToken:mapAccessToken,
+                    
+                    //Access token for authentication, if need, edit or refresh the content of token on the App.js file.
+                    accessToken: mapAccessToken,
+                    
+                    // Use models.TokenType.Aad for SaaS embed.
                     tokenType: models.TokenType.Aad, // Use models.TokenType.Aad for SaaS embed
+                    
+                    //Layout and display settings for the embedded report.
                     settings: {
                         panes: {
                             filters: {
@@ -37,6 +48,7 @@ function AustralianMap() {
                         },
                     },
                 }}
+                //Define event handlers for report events like load succeeded, load failed or rendered.
                 eventHandlers={
                     new Map([
                         [
@@ -45,7 +57,7 @@ function AustralianMap() {
                                 window.report.setPage("ReportSection");
                                 console.log("Report loaded");
                                 window.report.getPages().then((pages) => {
-                                    console.log(pages); // This will print all the pages in the report
+                                    console.log(pages); // This will print all the pages in the report.
                                 });
                             },
                         ],
@@ -65,9 +77,10 @@ function AustralianMap() {
                         ["pageChanged", (event) => console.log(event)],
                     ])
                 }
+                //Giving the Power BI report a CSS style.
                 cssClassName={"powerbi"}
                 getEmbeddedComponent={(embeddedReport) => {
-                    window.report = embeddedReport;
+                    window.report = embeddedReport;     // Store the embedded report for future reference.
                 }}
             />
         </div>

@@ -1,3 +1,4 @@
+// Importing required dependencies and components.
 import react from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,62 +11,46 @@ import { AccessTokenContext } from "../../App";
 import { useAuth } from "../../AuthContext";
 
 function AirlineOverview() {
+    // Using react-router's navigate function for programmatic navigation.
     const navigate = useNavigate();
+
+    // State for handling errors.
     const [error, setError] = useState(null);
-    const { airlineAccessToken, routeAccessToken } = useContext(AccessTokenContext);
+
+    // Accessing the context for authentication and access tokens.
+    const { airlineAccessToken } = useContext(AccessTokenContext);
     const { isLoggedIn } = useAuth();
 
+    // useEffect hook to redirect to login page if the user is not authenticated.
     useEffect(() => {
         if (!isLoggedIn) {
             navigate("/login");
         }
     }, [isLoggedIn, navigate]);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        try {
-            const response = await fetch(
-                "http://localhost:8080/ForAirlineOverview",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json", //still need or not??
-                    },
-                }
-            );
-
-            const responseData = await response.json();
-            console.log(responseData);
-            if (response.ok) {
-                console.log(localStorage);
-                localStorage.setItem("token", responseData.token);
-                console.log(localStorage);
-                navigate("/ForAirlineOverview");
-            } else {
-                //error handler
-                setError(responseData.message || "An error occurred");
-            }
-        } catch (err) {
-            setError(err.message);
-            console.log(err);
-        }
-    };
-
+    // Return statement to return the for airline's overview Power BI report.
     return (
         <div>
             <Navbar />
             <PowerBIEmbed
                 embedConfig={{
-                    type: "report", // Supported types: report, dashboard, tile, visual, qna, paginated report and create
-                    //new power bi item id = change here
+                    // Define the type of Power BI item, supported types: report, dashboard, tile, visual, qna, paginated report and create.
+                    type: "report",
+
+                    //Unique Power BI report ID, if input a new Power BI item, modify the corresponding ID as well.
                     id: "7ffadd76-6203-43b5-98f9-93423364d7aa",
-                    //new power bi item URL = change here
+
+                    //Power BI embed URL for the report, if input a new Power BI item, modify the corresponding URL as well.
                     embedUrl:
                         "https://app.powerbi.com/reportEmbed?reportId=7ffadd76-6203-43b5-98f9-93423364d7aa&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVNPVVRILUVBU1QtQVNJQS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsidXNhZ2VNZXRyaWNzVk5leHQiOnRydWV9fQ%3d%3d",
-                    //new power bi item token = change here
+
+                    //Access token for authentication, if need, edit or refresh the content of token on the App.js file.
                     accessToken: airlineAccessToken,
-                    tokenType: models.TokenType.Aad, // Use models.TokenType.Aad for SaaS embed
+
+                    // Use models.TokenType.Aad for SaaS embed.
+                    tokenType: models.TokenType.Aad,
+
+                    //Layout and display settings for the embedded report.
                     settings: {
                         panes: {
                             filters: {
@@ -79,6 +64,7 @@ function AirlineOverview() {
                         },
                     },
                 }}
+                //Define event handlers for report events like load succeeded, load failed or rendered.
                 eventHandlers={
                     new Map([
                         [
@@ -86,8 +72,8 @@ function AirlineOverview() {
                             function () {
                                 window.report.setPage("ReportSection");
                                 console.log("Report loaded");
-                                window.report.getPages().then(pages => {
-                                    console.log(pages); // This will print all the pages in the report
+                                window.report.getPages().then((pages) => {
+                                    console.log(pages); // This will print all the pages in the report.
                                 });
                             },
                         ],
@@ -107,9 +93,10 @@ function AirlineOverview() {
                         ["pageChanged", (event) => console.log(event)],
                     ])
                 }
+                //Giving the Power BI report a CSS style.
                 cssClassName={"powerbi"}
                 getEmbeddedComponent={(embeddedReport) => {
-                    window.report = embeddedReport;
+                    window.report = embeddedReport; // Store the embedded report for future reference.
                 }}
             />
         </div>
