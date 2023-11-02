@@ -51,7 +51,7 @@ git clone git@github.sydney.edu.au:yzou9073/Capstone.git
 cd Capstone
 
 # Install dependencies for the front-end
-# Assuming you are in the root directory where 'package.json' is located
+# Where 'package.json' is located
 npm install
 
 # Start the development server for the React front-end
