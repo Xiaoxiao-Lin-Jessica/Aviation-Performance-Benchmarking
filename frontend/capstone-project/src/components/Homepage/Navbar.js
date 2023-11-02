@@ -59,21 +59,6 @@ function Navbar() {
                 </div>
             </ul>
 
-            {/*<div className="rightNav">
-                {isLoggedIn ? (
-                    <button className="icon-button" onClick={() => {
-                        setIsLoggedIn(false);
-                    }}>
-                        <a href="/"><LogoutIcon /></a>
-                    </button>
-                ) : (
-                    <button className="icon-button">
-                        <a href="/login"><LoginIcon /></a>
-                        <a href="/login">Sign In</a>
-                        <span className="underline"></span>
-                    </button>
-                )}
-            </div>*/}
 
             <div className="rightNav">
                 {isLoggedIn ? (
