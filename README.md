@@ -18,7 +18,8 @@ We believe that this platform will not only bridge the information gap but also 
 
 ## Demo
 
-[![Watch the video](https://player.vimeo.com/video/880386815?h=bc78adba01)](https://player.vimeo.com/video/880386815?h=bc78adba01)
+[![Watch the Video](https://i.vimeocdn.com/video/880386815.webp?s=bc78adba01)](https://player.vimeo.com/video/880386815?h=bc78adba01 "Click to Watch the Video")
+
 
 ## Approach
 
