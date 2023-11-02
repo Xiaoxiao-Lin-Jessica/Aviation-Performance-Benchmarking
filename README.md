@@ -60,3 +60,5 @@ npm install
 # Start the development server for the React front-end
 npm start
 
+# For backend, please run "MyApplication.java".
+
