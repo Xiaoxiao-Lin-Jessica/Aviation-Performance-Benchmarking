@@ -59,7 +59,7 @@ function Navbar() {
                 </div>
             </ul>
 
-            <div className="rightNav">
+            {/*<div className="rightNav">
                 {isLoggedIn ? (
                     <button className="icon-button" onClick={() => {
                         setIsLoggedIn(false);
@@ -69,9 +69,26 @@ function Navbar() {
                 ) : (
                     <button className="icon-button">
                         <a href="/login"><LoginIcon /></a>
+                        <a href="/login">Sign In</a>
+                        <span className="underline"></span>
+                    </button>
+                )}
+            </div>*/}
+
+            <div className="rightNav">
+                {isLoggedIn ? (
+                    <button className="icon-button" onClick={() => {
+                        setIsLoggedIn(false);
+                    }}>
+                        <a href="/"><span>Sign Out</span><div className="underline"></div></a>
+                    </button>
+                ) : (
+                    <button className="icon-button">
+                        <a href="/login"><span>Sign In</span><div className="underline"></div></a>
                     </button>
                 )}
             </div>
+
         </nav>
     );
 }
