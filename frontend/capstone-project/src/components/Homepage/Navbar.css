@@ -117,3 +117,43 @@
     height: 30px;
     margin: 0 20px;                 /* Spacing between images */
 }
+
+
+
+/* Styling for the button that will hold the icon and hover effect */
+.icon-button {
+    background-color: transparent;
+    border: none;  /* Remove the default border that buttons usually have */
+    cursor: pointer;  /* Change the cursor to a hand when hovering over the button, indicating it's clickable */
+    font-size: 16px;
+    position: relative;
+}
+
+/* Styling to remove the browser's default focus outline, which can sometimes look out of place */
+.icon-button:focus {
+    outline: none;  /* Disable the default browser outline that appears when an element is focused (e.g., clicked) */
+}
+
+/* Styling for the anchor link (<a>) inside our button */
+.icon-button a {
+    text-decoration: none;
+    color: inherit;
+    display: block;  /* Allow the link to occupy the full space of its parent, making the entire button clickable */
+}
+
+/* Styling for the underline effect that appears on hover */
+.icon-button .underline {
+    display: none;  /* Initially, we hide the underline */
+    width: 60px;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);  /* Center the underline by moving it back 50% of its width */
+}
+
+/* Styling that's applied when hovering over the .icon-button */
+.icon-button:hover .underline {
+    display: block;
+}
