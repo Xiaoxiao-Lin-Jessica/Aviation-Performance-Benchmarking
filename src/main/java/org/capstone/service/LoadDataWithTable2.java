@@ -13,39 +13,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoadDataWithTable2 {
-    private final String CANCEL_DELAY = "B";
+    // Define a constant string for referencing the "Cancel_Delay" node in the database
+    private final String CANCEL_DELAY = "Cancel_Delay";
+    // Reference to the Firebase database
     private final DatabaseReference databaseReference;
-
+    // Constructor to initialize the database reference
     public LoadDataWithTable2() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
     }
-
+    // Method to load data from an Excel file and store it in Firebase
     public void loadExcel2ToFirebase(String excelFilePath) {
         try {
+            // Open and read the Excel file
             FileInputStream excelFile = new FileInputStream(excelFilePath);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
+            // Reference to the "Load_Factor" node in the database
             DatabaseReference canceldelayReference = databaseReference.child(CANCEL_DELAY);
-//            int lastRowIndex = sheet.getLastRowNum();
-//            int currentRowNum = 1;
-//
-//            while (currentRowNum <= lastRowIndex) {
-//                Row row = sheet.getRow(currentRowNum);
-
-
+            // Loop through the rows in the Excel sheet
             for (Row row : sheet) {
                 if (row.getRowNum() == 0) {
                     continue;
                 }
-//                if (row.getRowNum() == lastRowIndex) {
-//                    break;
-//                }
-//                if (isCellValueInvalid(row.getCell(11)) || isCellValueInvalid(row.getCell(12)) ||
-//                        isCellValueInvalid(row.getCell(14)) || isCellValueInvalid(row.getCell(15))) {
-//                    currentRowNum++;
-//                    continue;
-//                }
+                // Extract data from each cell in the row
                 String route = row.getCell(0).getStringCellValue();
                 String departing_port = row.getCell(1).getStringCellValue();
                 String arriving_port = row.getCell(2).getStringCellValue();
@@ -65,8 +56,7 @@ public class LoadDataWithTable2 {
                 String date = row.getCell(16).getStringCellValue();
                 Double year = row.getCell(17).getNumericCellValue();
                 String month = row.getCell(18).getStringCellValue();
-
-
+                // Create a map to store the extracted data
                 Map<String, Object> rowDataOfT2 = new HashMap<>();
                 rowDataOfT2.put("Route", route);
                 rowDataOfT2.put("DepartingPort", departing_port);
@@ -87,22 +77,18 @@ public class LoadDataWithTable2 {
                 rowDataOfT2.put("Date", date);
                 rowDataOfT2.put("Year", year);
                 rowDataOfT2.put("Month", month);
-
+                // Push the data to the "Cancel_Delay" node in the database and handle any errors
                 canceldelayReference.push().setValue(rowDataOfT2, (databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         System.err.println("Data could not be saved: " + databaseError.getMessage());
                     }
                 });
-//                currentRowNum++;
             }
+            // Close the workbook and Excel file
             workbook.close();
             excelFile.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-//    private boolean isCellValueInvalid(Cell cell) {
-//        return cell != null && (cell.getCellType() == CellType.STRING) &&
-//                ("NA".equalsIgnoreCase(cell.getStringCellValue()) || "#VALUE!".equalsIgnoreCase(cell.getStringCellValue()));
-//    }
 }

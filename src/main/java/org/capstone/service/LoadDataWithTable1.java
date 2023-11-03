@@ -13,25 +13,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoadDataWithTable1 {
+    // Define a constant string for referencing the "Load_Factor" node in the database
     private final String LOAD_FACTOR = "Load_Factor";
+    // Reference to the Firebase database
     private final DatabaseReference databaseReference;
-
-
+    // Constructor to initialize the database reference
     public LoadDataWithTable1() {
         databaseReference = FirebaseDatabase.getInstance().getReference();
     }
-
+    // Method to load data from an Excel file and store it in Firebase
     public void loadExcelToFirebase(String excelFilePath) {
         try {
+            // Open and read the Excel file
             FileInputStream excelFile = new FileInputStream(excelFilePath);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
+            // Reference to the "Load_Factor" node in the database
             DatabaseReference loadFactorReference = databaseReference.child(LOAD_FACTOR);
-
+            // Loop through the rows in the Excel sheet
             for (Row row : sheet) {
+                // Skip the header row (row 0)
                 if (row.getRowNum() == 0) {
                     continue;
                 }
+                // Extract data from each cell in the row
                 String route = row.getCell(0).getStringCellValue();
                 String departing_port = row.getCell(1).getStringCellValue();
                 String arriving_port = row.getCell(2).getStringCellValue();
@@ -45,8 +50,7 @@ public class LoadDataWithTable1 {
                 Double year = row.getCell(10).getNumericCellValue();
                 String month = row.getCell(11).getStringCellValue();
                 String date = row.getCell(12).getStringCellValue();
-
-
+                // Create a map to store the extracted data
                 Map<String, Object> rowData = new HashMap<>();
                 rowData.put("Route", route);
                 rowData.put("DepartingPort", departing_port);
@@ -61,14 +65,14 @@ public class LoadDataWithTable1 {
                 rowData.put("Year", year);
                 rowData.put("Month", month);
                 rowData.put("Date", date);
-
+                // Push the data to the "Load_Factor" node in the database and handle any errors
                 loadFactorReference.push().setValue(rowData, (databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         System.err.println("Data could not be saved: " + databaseError.getMessage());
                     }
                 });
             }
-
+            // Close the workbook and Excel file
             workbook.close();
             excelFile.close();
         } catch (IOException e) {
